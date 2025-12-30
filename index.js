@@ -5,7 +5,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
-  res.send("Hello from Coolify + GitHub + Node.js!");
+  res.send("Welcome to Frmply World");
 });
 
 app.listen(PORT, () => {
