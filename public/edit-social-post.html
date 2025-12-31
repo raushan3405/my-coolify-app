@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Social Post - Frmply</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <!-- Sidebar content -->
+            <div class="logo">
+                <img src="" alt="Frmply Logo" style="width:100px; height:auto;">
+            </div>
+            <ul class="menu">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="customers.html">Customers</a></li>
+                <li><a href="my-orders.html">My Orders</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="sales.html">Sales</a></li>
+                <li><a href="invoices.html">Invoice</a></li>
+                <li><a href="leaderboard.html">Leaderboard</a></li>
+                <li><a href="f-team.html">F-Team</a></li>
+                <li><a href="budget-track.html">Budget</a></li>
+            </ul>
+            <ul class="bottom-menu">
+                <li class="active"><a href="settings.html">Settings</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <h2>Edit Social Post</h2>
+                <a href="social-media.html" class="btn btn-dark">&larr; Back to Planner</a>
+            </header>
+
+            <section class="form-container" style="background: #fff; padding: 20px; border-radius: 8px;">
+                <form id="editPostForm">
+                    <input type="hidden" id="post_id" name="post_id">
+
+                    <div class="form-group">
+                        <label for="platform">Platform</label>
+                        <select id="platform" name="platform">
+                            <option value="Facebook">Facebook</option>
+                            <option value="Instagram">Instagram</option>
+                            <option value="Twitter">Twitter</option>
+                            <option value="LinkedIn">LinkedIn</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="content">Content</label>
+                        <textarea id="content" name="content" rows="6" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="scheduled_post_date">Scheduled Post Time</label>
+                        <input type="datetime-local" id="scheduled_post_date" name="scheduled_post_date">
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select id="status" name="status">
+                            <option value="Draft">Draft</option>
+                            <option value="Scheduled">Scheduled</option>
+                            <option value="Posted">Posted</option>
+                            <option value="Cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                     <hr style="margin: 20px 0;">
+                    <div class="form-group">
+                        <label for="image_url">Image URL (Optional)</label>
+                        <input type="text" id="image_url" name="image_url">
+                    </div>
+                     <div class="form-group">
+                        <label for="link_url">Link URL (Optional)</label>
+                        <input type="text" id="link_url" name="link_url">
+                    </div>
+
+                    <button type="submit" class="btn">Update Post</button>
+                </form>
+                 <div id="form-message" style="margin-top: 15px;"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="edit-social-post.js"></script>
+</body>
+</html>

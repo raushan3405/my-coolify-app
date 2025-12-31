@@ -49,6 +49,12 @@ app.use('/api/budget', budgetRoutes);
 const notificationRoutes = require('./routes/notifications');
 app.use('/api/notifications', notificationRoutes);
 
+const supportRoutes = require('./routes/support');
+app.use('/api/support', supportRoutes);
+
+const socialMediaRoutes = require('./routes/social_media');
+app.use('/api/social_media', socialMediaRoutes);
+
 
 // --- Server Start ---
 

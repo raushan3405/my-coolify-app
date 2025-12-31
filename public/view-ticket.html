@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Ticket - Frmply</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .ticket-details { background: #fff; padding: 20px; border-radius: 8px; }
+        .ticket-details h3 { margin-top: 0; }
+        .ticket-info { margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+        .ticket-info p { margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <!-- Sidebar content -->
+            <div class="logo">
+                <img src="" alt="Frmply Logo" style="width:100px; height:auto;">
+            </div>
+            <ul class="menu">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="customers.html">Customers</a></li>
+                <li><a href="my-orders.html">My Orders</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="sales.html">Sales</a></li>
+                <li><a href="invoices.html">Invoice</a></li>
+                <li><a href="leaderboard.html">Leaderboard</a></li>
+                <li><a href="f-team.html">F-Team</a></li>
+                <li><a href="budget-track.html">Budget</a></li>
+            </ul>
+            <ul class="bottom-menu">
+                <li class="active"><a href="settings.html">Settings</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <h2 id="ticket-subject-header">Viewing Ticket...</h2>
+                <a href="support.html" class="btn btn-dark">&larr; Back to All Tickets</a>
+            </header>
+
+            <section class="ticket-details">
+                <div id="ticket-info-container" class="ticket-info">
+                    <p><strong>Submitter:</strong> <span id="submitter-name"></span></p>
+                    <p><strong>Contact:</strong> <span id="submitter-contact"></span></p>
+                    <hr>
+                    <p><strong>Description:</strong></p>
+                    <p id="ticket-description"></p>
+                </div>
+
+                <h3>Update Ticket Status</h3>
+                <form id="updateTicketForm">
+                    <input type="hidden" id="ticket_id" name="ticket_id">
+                    <!-- Hidden fields to hold original subject/description for PUT request -->
+                    <input type="hidden" id="subject" name="subject">
+                    <input type="hidden" id="description" name="description_hidden">
+
+                    <div class="form-group">
+                        <label for="priority">Priority</label>
+                        <select id="priority" name="priority">
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select id="status" name="status">
+                            <option value="Open">Open</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Closed">Closed</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn">Save Changes</button>
+                </form>
+                <div id="form-message" style="margin-top: 15px;"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="view-ticket.js"></script>
+</body>
+</html>
