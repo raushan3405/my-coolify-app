@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services - Frmply</title>
+    <title>Sales - Frmply</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">
                 <img src="" alt="Frmply Logo" style="width:100px; height:auto;">
@@ -17,8 +16,8 @@
                 <li><a href="index.html">Dashboard</a></li>
                 <li><a href="customers.html">Customers</a></li>
                 <li><a href="my-orders.html">My Orders</a></li>
-                <li class="active"><a href="services.html">Services</a></li>
-                <li><a href="sales.html">Sales</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li class="active"><a href="sales.html">Sales</a></li>
                 <li><a href="invoices.html">Invoice</a></li>
                 <li><a href="leaderboard.html">Leaderboard</a></li>
             </ul>
@@ -29,39 +28,41 @@
             </ul>
         </aside>
 
-        <!-- Main Content -->
         <main class="main-content">
             <header class="header">
-                <h2>
-                    Services
-                </h2>
-                <div class="header-actions" style="display: flex; gap: 10px;">
-                    <input type="text" placeholder="Search Services...">
-                    <button class="btn-dark">Search</button>
-                    <a href="new-service.html" class="btn">New Service</a>
-                </div>
+                <h2>Sales Records</h2>
+                <!-- Add search/filter controls here later -->
             </header>
 
-            <!-- Services Table -->
             <section class="table-container">
-                <table id="servicesTable">
+                <table id="salesTable">
                     <thead>
                         <tr>
-                            <th>FS-Code</th>
+                            <th>Cust. ID</th>
+                            <th>Cust. Name</th>
+                            <th>Gender</th>
+                            <th>Cust. No.</th>
+                            <th>Caste</th>
+                            <th>FS_Code</th>
                             <th>Service Name</th>
                             <th>Category</th>
-                            <th>Price</th>
-                            <th>Actions</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>FTM_Code</th>
+                            <th>FTM_Name</th>
+                            <th>Govt. Cost</th>
+                            <th>Service Cost</th>
+                            <th>Sale Amount</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Data will be populated by services.js -->
+                        <!-- Data will be populated by sales.js -->
                     </tbody>
                 </table>
             </section>
         </main>
     </div>
 
-    <script src="services.js"></script>
+    <script src="sales.js"></script>
 </body>
 </html>

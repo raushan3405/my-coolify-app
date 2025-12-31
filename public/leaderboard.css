@@ -1,0 +1,115 @@
+/* Leaderboard Specific Styles */
+
+.leaderboard-main {
+    background-color: #000;
+    color: #fff;
+}
+
+.leaderboard-header {
+    text-align: center;
+    padding: 10px;
+    background-color: #28a745;
+    color: #000;
+    font-weight: bold;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.leaderboard-container {
+    display: flex;
+    align-items: flex-end;
+    gap: 40px;
+}
+
+.podium-section {
+    display: flex;
+    align-items: flex-end;
+    flex-basis: 50%;
+    justify-content: center;
+    gap: 10px;
+}
+
+.podium-spot {
+    text-align: center;
+    padding: 15px;
+    border-radius: 8px;
+    width: 120px;
+}
+
+.first-place {
+    order: 2;
+    height: 200px;
+    background: linear-gradient(to top, #c0c0c0, #d4af37);
+    border: 2px solid #fff;
+}
+
+.second-place {
+    order: 1;
+    height: 150px;
+    background: linear-gradient(to top, #a9a9a9, #c0c0c0);
+     border: 2px solid #ccc;
+}
+
+.third-place {
+    order: 3;
+    height: 120px;
+    background: linear-gradient(to top, #a0522d, #cd7f32);
+     border: 2px solid #d2b48c;
+}
+
+.podium-rank-badge {
+    height: 40px;
+    margin-bottom: 10px;
+    /* Placeholder for crown images */
+}
+
+.podium-avatar {
+    width: 80px;
+    height: 80px;
+    background-color: #fff;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    border: 2px solid #000;
+}
+
+.podium-name {
+    font-weight: bold;
+    color: #000;
+}
+
+.podium-income {
+    background-color: #28a745;
+    color: #000;
+    padding: 5px;
+    border-radius: 4px;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+.ranking-section {
+    flex-basis: 50%;
+}
+
+.congrats-graphic {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.ranking-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.ranking-table th, .ranking-table td {
+    padding: 12px;
+    text-align: left;
+    color: #fff;
+}
+
+.ranking-table thead {
+    border-bottom: 2px solid #28a745;
+}
+
+.ranking-table tbody tr:nth-child(odd) {
+    background-color: #222;
+}

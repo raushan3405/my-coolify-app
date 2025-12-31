@@ -28,6 +28,27 @@ app.use('/api/customers', customerRoutes);
 const serviceRoutes = require('./routes/services');
 app.use('/api/services', serviceRoutes);
 
+const orderRoutes = require('./routes/orders');
+app.use('/api/orders', orderRoutes);
+
+const fTeamRoutes = require('./routes/f_team');
+app.use('/api/f_team', fTeamRoutes);
+
+const salesRoutes = require('./routes/sales');
+app.use('/api/sales', salesRoutes);
+
+const invoiceRoutes = require('./routes/invoices');
+app.use('/api/invoices', invoiceRoutes);
+
+const leaderboardRoutes = require('./routes/leaderboard');
+app.use('/api/leaderboard', leaderboardRoutes);
+
+const budgetRoutes = require('./routes/budget');
+app.use('/api/budget', budgetRoutes);
+
+const notificationRoutes = require('./routes/notifications');
+app.use('/api/notifications', notificationRoutes);
+
 
 // --- Server Start ---
 

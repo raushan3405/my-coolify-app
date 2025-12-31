@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services - Frmply</title>
+    <title>Manage Income - Frmply</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">
                 <img src="" alt="Frmply Logo" style="width:100px; height:auto;">
@@ -17,10 +16,12 @@
                 <li><a href="index.html">Dashboard</a></li>
                 <li><a href="customers.html">Customers</a></li>
                 <li><a href="my-orders.html">My Orders</a></li>
-                <li class="active"><a href="services.html">Services</a></li>
+                <li><a href="services.html">Services</a></li>
                 <li><a href="sales.html">Sales</a></li>
                 <li><a href="invoices.html">Invoice</a></li>
                 <li><a href="leaderboard.html">Leaderboard</a></li>
+                <li><a href="f-team.html">F-Team</a></li>
+                <li class="active"><a href="budget-track.html">Budget</a></li>
             </ul>
             <ul class="bottom-menu">
                 <li><a href="#">Notification</a></li>
@@ -29,39 +30,34 @@
             </ul>
         </aside>
 
-        <!-- Main Content -->
         <main class="main-content">
             <header class="header">
-                <h2>
-                    Services
-                </h2>
-                <div class="header-actions" style="display: flex; gap: 10px;">
-                    <input type="text" placeholder="Search Services...">
-                    <button class="btn-dark">Search</button>
-                    <a href="new-service.html" class="btn">New Service</a>
+                <h2>Manage Income</h2>
+                <div class="header-actions">
+                     <a href="budget-track.html" class="btn btn-dark">&larr; Back to Budget</a>
+                    <a href="new-income.html" class="btn">Add New Income</a>
                 </div>
             </header>
 
-            <!-- Services Table -->
             <section class="table-container">
-                <table id="servicesTable">
+                <table id="incomeTable">
                     <thead>
                         <tr>
-                            <th>FS-Code</th>
-                            <th>Service Name</th>
-                            <th>Category</th>
-                            <th>Price</th>
+                            <th>Date</th>
+                            <th>Source</th>
+                            <th>Description</th>
+                            <th>Amount</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Data will be populated by services.js -->
+                        <!-- Data will be populated by budget-income.js -->
                     </tbody>
                 </table>
             </section>
         </main>
     </div>
 
-    <script src="services.js"></script>
+    <script src="budget-income.js"></script>
 </body>
 </html>

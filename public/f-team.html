@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services - Frmply</title>
+    <title>Team Management - Frmply</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">
                 <img src="" alt="Frmply Logo" style="width:100px; height:auto;">
@@ -17,51 +16,46 @@
                 <li><a href="index.html">Dashboard</a></li>
                 <li><a href="customers.html">Customers</a></li>
                 <li><a href="my-orders.html">My Orders</a></li>
-                <li class="active"><a href="services.html">Services</a></li>
+                <li><a href="services.html">Services</a></li>
                 <li><a href="sales.html">Sales</a></li>
                 <li><a href="invoices.html">Invoice</a></li>
                 <li><a href="leaderboard.html">Leaderboard</a></li>
+                <li class="active"><a href="f-team.html">F-Team</a></li>
+                <li><a href="budget-track.html">Budget</a></li>
             </ul>
             <ul class="bottom-menu">
-                <li><a href="#">Notification</a></li>
-                <li><a href="#">Social Media</a></li>
-                <li><a href="#">Support</a></li>
+                <li><a href="settings.html">Settings</a></li>
             </ul>
         </aside>
 
-        <!-- Main Content -->
         <main class="main-content">
             <header class="header">
-                <h2>
-                    Services
-                </h2>
-                <div class="header-actions" style="display: flex; gap: 10px;">
-                    <input type="text" placeholder="Search Services...">
-                    <button class="btn-dark">Search</button>
-                    <a href="new-service.html" class="btn">New Service</a>
+                <h2>Team Management</h2>
+                <div class="header-actions">
+                    <a href="new-team-member.html" class="btn">New Team Member</a>
                 </div>
             </header>
 
-            <!-- Services Table -->
             <section class="table-container">
-                <table id="servicesTable">
+                <table id="teamTable">
                     <thead>
                         <tr>
-                            <th>FS-Code</th>
-                            <th>Service Name</th>
-                            <th>Category</th>
-                            <th>Price</th>
+                            <th>FTM Code</th>
+                            <th>Name</th>
+                            <th>Role</th>
+                            <th>Email</th>
+                            <th>Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Data will be populated by services.js -->
+                        <!-- Data will be populated by f-team.js -->
                     </tbody>
                 </table>
             </section>
         </main>
     </div>
 
-    <script src="services.js"></script>
+    <script src="f-team.js"></script>
 </body>
 </html>

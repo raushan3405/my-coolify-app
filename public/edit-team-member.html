@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Team Member - Frmply</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="" alt="Frmply Logo" style="width:100px; height:auto;">
+            </div>
+            <ul class="menu">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="customers.html">Customers</a></li>
+                <li><a href="my-orders.html">My Orders</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="sales.html">Sales</a></li>
+                <li><a href="invoices.html">Invoice</a></li>
+                <li><a href="leaderboard.html">Leaderboard</a></li>
+                <li class="active"><a href="f-team.html">F-Team</a></li>
+            </ul>
+            <ul class="bottom-menu">
+                <li><a href="#">Notification</a></li>
+                <li><a href="#">Social Media</a></li>
+                <li><a href="#">Support</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <h2>Edit Team Member</h2>
+            </header>
+
+            <section class="form-container" style="background: #fff; padding: 20px; border-radius: 8px;">
+                <form id="editTeamMemberForm">
+                     <input type="hidden" id="ftm_code" name="ftm_code">
+
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="role">Role</label>
+                        <input type="text" id="role" name="role">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+                     <div class="form-group">
+                        <label for="is_active">Status</label>
+                        <select id="is_active" name="is_active">
+                            <option value="true">Active</option>
+                            <option value="false">Inactive</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn">Update Team Member</button>
+                </form>
+                 <div id="form-message" style="margin-top: 15px;"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="edit-team-member.js"></script>
+</body>
+</html>
