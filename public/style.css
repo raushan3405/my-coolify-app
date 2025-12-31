@@ -115,7 +115,7 @@ body {
 .charts-and-tables {
     margin-top: 20px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(300px, minmax(300px, 1fr));
     gap: 20px;
 }
 
