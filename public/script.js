@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
     // Payment Mode in % - Pie Chart
     const paymentModePieCtx = document.getElementById('paymentModePieChart').getContext('2d');
@@ -18,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         options: {
             responsive: true,
-            maintainAspectRatio: false,
             plugins: {
                 legend: {
                     position: 'bottom',
@@ -47,7 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         options: {
             responsive: true,
-            maintainAspectRatio: false,
             scales: {
                 y: {
                     beginAtZero: true
