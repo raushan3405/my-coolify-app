@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Frmply</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="" alt="Frmply Logo" style="width:100px; height:auto;">
+            </div>
+            <ul class="menu">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="customers.html">Customers</a></li>
+                <li><a href="#">My Orders</a></li>
+                <li class="active"><a href="services.html">Services</a></li>
+                <li><a href="#">Sales</a></li>
+                <li><a href="#">Invoice</a></li>
+                <li><a href="#">Leaderboard</a></li>
+            </ul>
+            <ul class="bottom-menu">
+                <li><a href="#">Notification</a></li>
+                <li><a href="#">Social Media</a></li>
+                <li><a href="#">Support</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header">
+                <h2>
+                    Services
+                </h2>
+                <div class="header-actions" style="display: flex; gap: 10px;">
+                    <input type="text" placeholder="Search Services...">
+                    <button class="btn-dark">Search</button>
+                    <a href="new-service.html" class="btn">New Service</a>
+                </div>
+            </header>
+
+            <!-- Services Table -->
+            <section class="table-container">
+                <table id="servicesTable">
+                    <thead>
+                        <tr>
+                            <th>FS-Code</th>
+                            <th>Service Name</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data will be populated by services.js -->
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <script src="services.js"></script>
+</body>
+</html>
