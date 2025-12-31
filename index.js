@@ -1,5 +1,9 @@
+require('dotenv').config();
+
 const express = require('express');
 const path = require('path');
+const cors = require('cors');
+const db = require('./db');
 
 const app = express();
 
@@ -8,20 +12,37 @@ const PORT = process.env.PORT || 3000;
 
 // --- Middleware ---
 
-// 1. Serve static files from the 'public' directory (for HTML, CSS, client-side JS)
+// Enable CORS (safe for frontend + backend same domain)
+app.use(cors());
+
+// Serve static files from the 'public' directory (HTML, CSS, JS)
 app.use(express.static(path.join(__dirname, 'public')));
 
-// 2. Enable JSON body parsing for API requests
+// Enable JSON body parsing
 app.use(express.json());
 
-// --- API Routes ---
-
-// A test endpoint to confirm the API is working
+// --- BASIC API TEST ---
 app.get('/api', (req, res) => {
   res.json({ message: 'Welcome to the Frmply API!' });
 });
 
-// Import and use module-specific API routes
+// --- 🔴 DATABASE CONNECTION TEST (VERY IMPORTANT) ---
+app.get('/api/test-db', async (req, res) => {
+  try {
+    const result = await db.query('SELECT NOW()');
+    res.json({
+      success: true,
+      serverTime: result.rows[0]
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
+// --- API ROUTES ---
 const customerRoutes = require('./routes/customers');
 app.use('/api/customers', customerRoutes);
 
@@ -55,9 +76,7 @@ app.use('/api/support', supportRoutes);
 const socialMediaRoutes = require('./routes/social_media');
 app.use('/api/social_media', socialMediaRoutes);
 
-
-// --- Server Start ---
-
+// --- SERVER START ---
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`✅ Server running on port ${PORT}`);
 });
