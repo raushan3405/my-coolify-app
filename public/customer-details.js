@@ -40,9 +40,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (customer.documents && customer.documents.length > 0) {
             customer.documents.forEach(doc => {
                 const li = document.createElement('li');
-                // The file_path from the backend is relative to the project root, e.g., "public/uploads/customers/file.pdf"
-                // We need to make the link relative to the public folder.
-                const webPath = doc.file_path.replace('public/', ''); 
+                const webPath = doc.file_path.replace('public/', '');
                 li.innerHTML = `<a href="${webPath}" target="_blank">${doc.document_name}</a>`;
                 docList.appendChild(li);
             });
@@ -52,7 +50,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // --- 3. Add Action Buttons ---
         const editButton = document.createElement('a');
-        editButton.href = `#`; // To be updated to edit-customer-v2.html
+        editButton.href = `edit-customer-v2.html?id=${customer.cust_id}`; // Link to the new edit page
         editButton.className = 'btn';
         editButton.textContent = 'Edit';
         editButton.style.backgroundColor = '#ffc107';
@@ -76,8 +74,20 @@ document.addEventListener('DOMContentLoaded', async () => {
         if(event.target.classList.contains('btn-delete')){
             const customerId = event.target.dataset.id;
             if(confirm(`Are you sure you want to permanently delete customer ${customerId}? This will also delete all their documents.`)){
-                 // TODO: Implement DELETE fetch call
-                 alert('Delete functionality to be implemented next!');
+                try {
+                    const response = await fetch(`/api/customers/${customerId}`, {
+                        method: 'DELETE'
+                    });
+                    const result = await response.json();
+                    if(response.ok){
+                        alert(result.msg);
+                        window.location.href = 'customers.html';
+                    } else {
+                        throw new Error(result.msg || 'Could not delete customer.');
+                    }
+                } catch (err) {
+                    alert(`Error: ${err.message}`);
+                }
             }
         }
     });
