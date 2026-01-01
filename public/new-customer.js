@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('newCustomerForm');
     const messageDiv = document.getElementById('form-message');
+    const submitButton = form.querySelector('button[type="submit"]');
     const addDocBtn = document.getElementById('add-doc-btn');
     const docSection = document.getElementById('document-section');
 
@@ -26,17 +27,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- 2. Form Submission Logic ---
+    // --- 2. Form Submission Logic with Loading State ---
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
         messageDiv.textContent = '';
+
+        const originalButtonText = submitButton.innerHTML;
+        submitButton.disabled = true;
+        submitButton.innerHTML = `Saving... <span class="loader"></span>`;
 
         const formData = new FormData(form);
 
         try {
             const response = await fetch('/api/customers', {
                 method: 'POST',
-                body: formData, // No 'Content-Type' header, browser sets it for multipart/form-data
+                body: formData,
             });
 
             const result = await response.json();
@@ -44,17 +49,18 @@ document.addEventListener('DOMContentLoaded', () => {
             if (response.ok) {
                 messageDiv.textContent = `Customer ${result.full_name} created successfully with ID: ${result.cust_id}! Redirecting...`;
                 messageDiv.style.color = 'green';
-                form.reset();
-                docSection.innerHTML = '';
                 setTimeout(() => { window.location.href = 'customers.html'; }, 3000);
             } else {
                 messageDiv.textContent = `Error: ${result.msg || 'Could not create customer.'}`;
                 messageDiv.style.color = 'red';
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalButtonText;
             }
         } catch (error) {
             console.error('Submission error:', error);
             messageDiv.textContent = 'A network error occurred. Please try again.';
-            messageDiv.style.color = 'red';
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalButtonText;
         }
     });
 });

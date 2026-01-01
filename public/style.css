@@ -1,201 +1,63 @@
 /* General Body Styles */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    background-color: #f0f2f5;
-    color: #333;
-}
-
-.container {
-    display: flex;
-    min-height: 100vh;
-}
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #f0f2f5; color: #333; }
+.container { display: flex; min-height: 100vh; }
 
 /* Sidebar */
-.sidebar {
-    width: 250px;
-    background-color: #000;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-}
-
-.logo {
-    text-align: center;
-    padding-bottom: 20px;
-}
-
-.logo img {
-    max-width: 100px;
-}
-
-.menu, .bottom-menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.menu {
-    flex-grow: 1;
-}
-
-.menu li, .bottom-menu li {
-    padding: 12px 15px;
-    border-radius: 5px;
-    margin-bottom: 5px;
-    transition: background-color 0.3s;
-}
-
-/* TODO: Add styles for icons within menu items */
-.menu li a, .bottom-menu li a {
-    color: #fff;
-    text-decoration: none;
-    display: block;
-}
-
-.menu li.active {
-    background-color: #28a745; /* Active Green */
-}
-
-.menu li:hover:not(.active) {
-    background-color: #222;
-}
-
+.sidebar { width: 250px; background-color: #000; color: #fff; display: flex; flex-direction: column; padding: 20px; box-shadow: 2px 0 5px rgba(0,0,0,0.1); }
+.logo { text-align: center; padding-bottom: 20px; }
+.logo img { max-width: 100px; }
+.menu, .bottom-menu { list-style: none; padding: 0; margin: 0; }
+.menu { flex-grow: 1; }
+.menu li, .bottom-menu li { padding: 12px 15px; border-radius: 5px; margin-bottom: 5px; transition: background-color 0.3s; }
+.menu li a, .bottom-menu li a { color: #fff; text-decoration: none; display: block; }
+.menu li.active { background-color: #28a745; }
+.menu li:hover:not(.active) { background-color: #222; }
 
 /* Main Content Area */
-.main-content {
-    flex-grow: 1;
-    background-color: #e0ffe0; /* Light Green Background */
-    padding: 20px;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.header h2 {
-    margin: 0;
-    font-size: 28px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-/* TODO: Add style for header icon */
+.main-content { flex-grow: 1; background-color: #e0ffe0; padding: 20px; }
+.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.header h2 { margin: 0; font-size: 28px; display: flex; align-items: center; gap: 10px; }
 
 /* Cards */
-.cards {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-}
-
-.card {
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 20px;
-    flex-grow: 1;
-    min-width: 200px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    border-left: 5px solid #ccc;
-}
-
-.card.card-revenue {
-    background-color: #28a745;
-    color: #fff;
-    border-left-color: #000;
-}
-
-.card-header h3 {
-    margin: 0;
-    font-size: 16px;
-    color: #666;
-}
-
-.card-revenue .card-header h3 {
-    color: #fff;
-}
-
-.card-body p {
-    margin: 10px 0 0;
-    font-size: 28px;
-    font-weight: bold;
-}
+.cards { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 20px; }
+.card { background-color: #fff; border-radius: 8px; padding: 20px; flex-grow: 1; min-width: 200px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-left: 5px solid #ccc; }
+.card.card-revenue { background-color: #28a745; color: #fff; border-left-color: #000; }
+.card-header h3 { margin: 0; font-size: 16px; color: #666; }
+.card-revenue .card-header h3 { color: #fff; }
+.card-body p { margin: 10px 0 0; font-size: 28px; font-weight: bold; }
 
 /* Charts and Tables Section */
-.charts-and-tables {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-.chart-container,
-.table-container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
+.charts-and-tables { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.chart-container, .table-container { background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
 
 /* Table Styles */
-.table-container table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.table-container th, .table-container td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-.table-container th {
-    background-color: #28a745;
-    color: white;
-}
-
-.table-container tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
+.table-container table { width: 100%; border-collapse: collapse; }
+.table-container th, .table-container td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+.table-container th { background-color: #28a745; color: white; }
+.table-container tr:nth-child(even) { background-color: #f9f9f9; }
 
 /* Form Elements */
-.form-group {
-    margin-bottom: 15px;
+.form-group { margin-bottom: 15px; }
+input[type="text"], input[type="date"], input[type="email"], input[type="number"], input[type="datetime-local"], select, textarea { width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box; }
+
+button, .btn { background-color: #28a745; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s; display: inline-flex; align-items: center; justify-content: center; }
+button:hover, .btn:hover { background-color: #218838; }
+.btn-dark { background-color: #000; }
+.btn-dark:hover { background-color: #333; }
+
+/* --- Loading Spinner --- */
+.loader {
+    border: 3px solid rgba(255, 255, 255, 0.3); /* Light grey */
+    border-top: 3px solid #fff; /* White */
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    margin-left: 10px;
 }
 
-input[type="text"],
-input[type="date"],
-select {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
-
-button, .btn {
-    background-color: #28a745;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button:hover, .btn:hover {
-    background-color: #218838;
-}
-
-.btn-dark {
-    background-color: #000;
-}
-
-.btn-dark:hover {
-    background-color: #333;
-}
-

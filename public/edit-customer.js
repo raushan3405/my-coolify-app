@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const form = document.getElementById('editCustomerForm');
     const messageDiv = document.getElementById('form-message');
+    const submitButton = form.querySelector('button[type="submit"]');
     const customerId = new URLSearchParams(window.location.search).get('id');
     
     const existingDocsSection = document.getElementById('existing-docs-section');
@@ -20,7 +21,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (!response.ok) throw new Error('Customer not found.');
         const customer = await response.json();
 
-        // Populate text fields
         for (const key in customer) {
             if (form.elements[key]) {
                 form.elements[key].value = customer[key];
@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
         document.getElementById('cust_id_display').textContent = customer.cust_id;
 
-        // Populate existing documents
         if (customer.documents && customer.documents.length > 0) {
             existingDocsSection.innerHTML = customer.documents.map(doc => `
                 <div class="form-group">
@@ -60,10 +59,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
 
-    // --- 3. Form Submission ---
+    // --- 3. Form Submission with Loading State ---
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
         messageDiv.textContent = '';
+        
+        const originalButtonText = submitButton.innerHTML;
+        submitButton.disabled = true;
+        submitButton.innerHTML = `Saving... <span class="loader"></span>`;
 
         const formData = new FormData(form);
 
@@ -82,10 +85,14 @@ document.addEventListener('DOMContentLoaded', async () => {
             } else {
                 messageDiv.textContent = `Error: ${result.msg || 'Could not update customer.'}`;
                 messageDiv.style.color = 'red';
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalButtonText;
             }
         } catch (error) {
             console.error('Update error:', error);
             messageDiv.textContent = 'A network error occurred. Please try again.';
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalButtonText;
         }
     });
 });
