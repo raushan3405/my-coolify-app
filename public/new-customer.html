@@ -3,84 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Customer - Frmply</title>
+    <title>Create New Customer - Frmply</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">
                 <img src="" alt="Frmply Logo" style="width:100px; height:auto;">
             </div>
             <ul class="menu">
-                 <li><a href="index.html">Dashboard</a></li>
+                <li><a href="index.html">Dashboard</a></li>
                 <li class="active"><a href="customers.html">Customers</a></li>
-                <li><a href="#">My Orders</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Sales</a></li>
-                <li><a href="#">Invoice</a></li>
-                <li><a href="#">Leaderboard</a></li>
+                <li><a href="my-orders.html">My Orders</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="sales.html">Sales</a></li>
+                <li><a href="invoices.html">Invoice</a></li>
+                <li><a href="leaderboard.html">Leaderboard</a></li>
+                <li><a href="f-team.html">F-Team</a></li>
+                <li><a href="budget-track.html">Budget</a></li>
             </ul>
             <ul class="bottom-menu">
-                <li><a href="#">Notification</a></li>
-                <li><a href="#">Social Media</a></li>
-                <li><a href="#">Support</a></li>
+                <li><a href="settings.html">Settings</a></li>
             </ul>
         </aside>
 
-        <!-- Main Content -->
         <main class="main-content">
             <header class="header">
                 <h2>Create New Customer</h2>
+                <a href="customers.html" class="btn btn-dark">&larr; Back to Customers</a>
             </header>
 
-            <!-- New Customer Form -->
             <section class="form-container" style="background: #fff; padding: 20px; border-radius: 8px;">
-                <form id="newCustomerForm">
+                <form id="newCustomerForm" enctype="multipart/form-data">
+                    <!-- Customer ID is now auto-generated and removed from the form -->
                     <div class="form-group">
-                        <label for="cust_id">Customer ID</label>
-                        <input type="text" id="cust_id" name="cust_id" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" required>
+                        <label for="full_name">Full Name</label>
+                        <input type="text" id="full_name" name="full_name" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" id="email" name="email">
                     </div>
                     <div class="form-group">
-                        <label for="mob_no">Mobile Number</label>
-                        <input type="text" id="mob_no" name="mob_no">
+                        <label for="mobile_number">Mobile Number</label>
+                        <input type="text" id="mobile_number" name="mobile_number" required>
                     </div>
                     <div class="form-group">
-                        <label for="dob">Date of Birth</label>
-                        <input type="date" id="dob" name="dob">
+                        <label for="date_of_birth">Date of Birth</label>
+                        <input type="date" id="date_of_birth" name="date_of_birth">
                     </div>
                     <div class="form-group">
                         <label for="gender">Gender</label>
-                        <select id="gender" name="gender">
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                            <option value="Other">Other</option>
-                        </select>
+                        <select id="gender" name="gender"><option value="Male">Male</option><option value="Female">Female</option><option value="Other">Other</option></select>
                     </div>
-                     <div class="form-group">
-                        <label for="caste">Caste</label>
-                        <input type="text" id="caste" name="caste">
-                    </div>
-                    <div class="form-group">
-                        <label for="address">Address</label>
-                        <input type="text" id="address" name="address">
-                    </div>
+                    <div class="form-group"><label for="mother_name">Mother’s Name</label><input type="text" id="mother_name" name="mother_name"></div>
+                    <div class="form-group"><label for="father_name">Father’s Name</label><input type="text" id="father_name" name="father_name"></div>
+                    <div class="form-group"><label for="caste">Caste</label><input type="text" id="caste" name="caste"></div>
+                    <div class="form-group"><label for="address">Address</label><textarea id="address" name="address"></textarea></div>
+                    <div class="form-group"><label for="pin_code">Pin Code</label><input type="text" id="pin_code" name="pin_code"></div>
+                    <div class="form-group"><label for="identification_1">Identification 1</label><input type="text" id="identification_1" name="identification_1"></div>
+                    <div class="form-group"><label for="identification_2">Identification 2</label><input type="text" id="identification_2" name="identification_2"></div>
+
+                    <hr style="margin: 20px 0;">
+
+                    <h4>Documents (Optional)</h4>
+                    <div id="document-section"></div>
+                    <button type="button" id="add-doc-btn" class="btn" style="background: #555;">Add Document</button>
+
+                    <hr style="margin: 20px 0;">
+
                     <button type="submit" class="btn">Save Customer</button>
                 </form>
-                 <div id="form-message" style="margin-top: 15px;"></div>
+                <div id="form-message" style="margin-top: 15px;"></div>
             </section>
         </main>
     </div>
-
-    <script src="new-customer.js"></script>
+    <script src="new-customer-v2.js"></script>
 </body>
 </html>
