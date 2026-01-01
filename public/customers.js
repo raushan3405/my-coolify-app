@@ -1,19 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     const tableBody = document.querySelector('#customersTable tbody');
-    const searchInput = document.querySelector('input[placeholder="Cust Search"]');
+    const searchInput = document.querySelector('input[placeholder="Search Customers..."]');
     const searchButton = document.querySelector('button.btn-dark');
 
-    // Function to fetch customer data and populate the table
     async function loadCustomers(searchTerm = '') {
         try {
+            // The backend GET route is already set up to handle search
             const url = searchTerm ? `/api/customers?search=${encodeURIComponent(searchTerm)}` : '/api/customers';
             const response = await fetch(url);
 
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            
             const customers = await response.json();
-
             tableBody.innerHTML = '';
 
             if (customers.length === 0) {
@@ -25,15 +23,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${customer.cust_id}</td>
-                    <td>${customer.name}</td>
+                    <td>${customer.full_name}</td>
                     <td>${customer.email || 'N/A'}</td>
-                    <td>${customer.mob_no}</td>
-                    <td>${customer.gender}</td>
-                    <td>${customer.caste}</td>
-                    <td>${customer.address}</td>
+                    <td>${customer.mobile_number}</td>
+                    <td>${customer.gender || 'N/A'}</td>
+                    <td>${customer.caste || 'N/A'}</td>
+                    <td>${customer.address || 'N/A'}</td>
                     <td>
-                        <a href="edit-customer.html?id=${customer.cust_id}" class="btn" style="background-color: #ffc107; padding: 5px 10px; margin-right: 5px;">Edit</a>
-                        <button class="btn btn-delete" data-id="${customer.cust_id}" style="background-color: #dc3545; padding: 5px 10px;">Delete</button>
+                        <a href="customer-details.html?id=${customer.cust_id}" class="btn">More Details</a>
                     </td>
                 `;
                 tableBody.appendChild(row);
@@ -45,32 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Event listener for delete button clicks (using event delegation)
-    tableBody.addEventListener('click', async (event) => {
-        if (event.target.classList.contains('btn-delete')) {
-            const customerId = event.target.dataset.id;
-            
-            if (confirm(`Are you sure you want to delete customer ${customerId}?`)) {
-                try {
-                    const response = await fetch(`/api/customers/${customerId}`, {
-                        method: 'DELETE',
-                    });
-
-                    if (response.ok) {
-                        // Refresh the customer list to show the change
-                        loadCustomers(searchInput.value);
-                    } else {
-                        const result = await response.json();
-                        alert(`Error: ${result.msg || 'Could not delete customer.'}`);
-                    }
-                } catch (error) {
-                    console.error('Delete error:', error);
-                    alert('An error occurred while trying to delete the customer.');
-                }
-            }
-        }
-    });
-
     // Event listeners for search
     searchButton.addEventListener('click', () => loadCustomers(searchInput.value));
     searchInput.addEventListener('keydown', (event) => {
@@ -79,6 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Initial load of customer data
+    // Initial load
     loadCustomers();
 });

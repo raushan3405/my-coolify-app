@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Details - Frmply</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; background: #fff; padding: 20px; border-radius: 8px; }
+        .details-grid .form-group { margin-bottom: 0; }
+        .details-grid label { font-weight: bold; color: #555; }
+        .details-grid p { margin: 0; padding: 8px; background: #f4f4f4; border-radius: 4px; }
+        .documents-section { margin-top: 20px; background: #fff; padding: 20px; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <!-- Sidebar content -->
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <h2 id="customer-name-header">Customer Details</h2>
+                <div class="header-actions" style="display: flex; gap: 10px;">
+                    <a href="customers.html" class="btn btn-dark">&larr; Back to List</a>
+                    <!-- We will add Edit and Delete buttons here later via JS -->
+                </div>
+            </header>
+
+            <section id="customer-details-container" class="details-grid">
+                <!-- Customer data will be populated here by JS -->
+            </section>
+
+            <section class="documents-section">
+                <h3>Uploaded Documents</h3>
+                <ul id="document-list"></ul>
+            </section>
+        </main>
+    </div>
+
+    <script src="customer-details.js"></script>
+</body>
+</html>

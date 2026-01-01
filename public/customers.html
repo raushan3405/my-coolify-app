@@ -5,46 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customers - Frmply</title>
     <link rel="stylesheet" href="style.css">
-    <!-- TODO: Add icon library -->
 </head>
 <body>
     <div class="container">
-        <!-- Sidebar -->
         <aside class="sidebar">
-            <div class="logo">
-                <img src="" alt="Frmply Logo" style="width:100px; height:auto;">
-            </div>
-            <ul class="menu">
-                <li><a href="index.html">Dashboard</a></li>
-                <li class="active"><a href="customers.html">Customers</a></li>
-                <li><a href="my-orders.html">My Orders</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="sales.html">Sales</a></li>
-                <li><a href="invoices.html">Invoice</a></li>
-                <li><a href="leaderboard.html">Leaderboard</a></li>
-            </ul>
-            <ul class="bottom-menu">
-                <li><a href="#">Notification</a></li>
-                <li><a href="#">Social Media</a></li>
-                <li><a href="#">Support</a></li>
-            </ul>
+            <!-- Sidebar content -->
         </aside>
 
-        <!-- Main Content -->
         <main class="main-content">
             <header class="header">
-                <h2>
-                    <!-- TODO: Add Customers Icon -->
-                    Customers
-                </h2>
+                <h2>Customers</h2>
                 <div class="header-actions" style="display: flex; gap: 10px;">
-                    <input type="text" placeholder="Cust Search">
+                    <input type="text" placeholder="Search Customers...">
                     <button class="btn-dark">Search</button>
-                    <a href="new-customer.html" class="btn">New Customer</a>
+                    <a href="new-customer-v2.html" class="btn">New Customer</a>
                 </div>
             </header>
 
-            <!-- Customer Table -->
             <section class="table-container">
                 <table id="customersTable">
                     <thead>
@@ -52,7 +29,7 @@
                             <th>Cust. ID</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Mob No.</th>
+                            <th>Mobile</th>
                             <th>Gender</th>
                             <th>Caste</th>
                             <th>Address</th>
@@ -60,7 +37,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Data will be populated by customers.js -->
+                        <!-- Data populated by customers.js -->
                     </tbody>
                 </table>
             </section>
