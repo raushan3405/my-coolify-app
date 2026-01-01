@@ -11,8 +11,8 @@ const pool = new Pool({
   ssl: false,
 });
 
-// Export a query function that uses the pool
-// This is a common pattern to ensure we can easily use the pool throughout the app
+// Export the pool object along with the query function
 module.exports = {
   query: (text, params) => pool.query(text, params),
+  pool: pool, // इस लाइन को जोड़ें
 };
