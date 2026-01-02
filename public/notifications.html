@@ -4,59 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notifications - Frmply</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        .notification-item {
-            padding: 15px;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .notification-item.unread {
-            background-color: #e8f5e9; /* A light green for unread items */
-            font-weight: bold;
-        }
-        .notification-item a {
-            text-decoration: none;
-            color: #28a745;
-        }
-    </style>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/auth.js"></script>
 </head>
-<body>
+<body class="app-body">
     <div class="container">
         <aside class="sidebar">
-            <div class="logo">
-                <img src="" alt="Frmply Logo" style="width:100px; height:auto;">
-            </div>
+            <div class="logo"><img src="/your-logo.png" alt="Frmply Logo" style="width:100px; height:auto;"></div>
             <ul class="menu">
-                <li><a href="index.html">Dashboard</a></li>
-                <li><a href="customers.html">Customers</a></li>
-                <li><a href="my-orders.html">My Orders</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="sales.html">Sales</a></li>
-                <li><a href="invoices.html">Invoice</a></li>
-                <li><a href="leaderboard.html">Leaderboard</a></li>
-                <li><a href="f-team.html">F-Team</a></li>
-                <li><a href="budget-track.html">Budget</a></li>
+                <li><a href="/">Dashboard</a></li>
+                <li><a href="/customers.html">Customers</a></li>
+                <li><a href="/my-orders.html">My Orders</a></li>
+                <li><a href="/services.html">Services</a></li>
+                <li><a href="/sales.html">Sales</a></li>
+                <li><a href="/invoices.html">Invoice</a></li>
+                <li><a href="/leaderboard.html">Leaderboard</a></li>
+                <li class="manager-only"><a href="/f-team.html">F-Team</a></li>
+                <li><a href="/budget-track.html">Budget</a></li>
             </ul>
             <ul class="bottom-menu">
-                <li class="active"><a href="settings.html">Settings</a></li>
+                <li class="active"><a href="/settings.html">Settings</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
             </ul>
         </aside>
-
         <main class="main-content">
             <header class="header">
                 <h2>Notifications</h2>
-                <a href="settings.html" class="btn btn-dark">&larr; Back to Settings</a>
+                <a href="/settings.html" class="btn btn-dark">&larr; Back to Settings</a>
             </header>
-
-            <section id="notification-list" class="table-container" style="padding: 0;">
-                <!-- Notifications will be populated by notifications.js -->
+            <section id="notification-list" class="table-container">
+                <!-- Notifications list -->
             </section>
         </main>
     </div>
-
-    <script src="notifications.js"></script>
+    <script src="/notifications.js"></script>
 </body>
 </html>

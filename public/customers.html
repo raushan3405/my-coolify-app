@@ -4,28 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customers - Frmply</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="auth.js"></script> <!-- Auth Guard -->
+    <link rel="stylesheet" href="/style.css">
+    <script src="/auth.js"></script>
 </head>
-<body>
+<body class="app-body">
     <div class="container">
         <aside class="sidebar">
-            <div class="logo">
-                <img src="" alt="Frmply Logo" style="width:100px; height:auto;">
-            </div>
+             <div class="logo"><img src="/your-logo.png" alt="Frmply Logo" style="width:100px; height:auto;"></div>
             <ul class="menu">
-                <li><a href="index.html">Dashboard</a></li>
-                <li class="active"><a href="customers.html">Customers</a></li>
-                <li><a href="my-orders.html">My Orders</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="sales.html">Sales</a></li>
-                <li><a href="invoices.html">Invoice</a></li>
-                <li><a href="leaderboard.html">Leaderboard</a></li>
-                <li><a href="f-team.html">F-Team</a></li>
-                <li><a href="budget-track.html">Budget</a></li>
+                <li><a href="/">Dashboard</a></li>
+                <li class="active"><a href="/customers.html">Customers</a></li>
+                <li><a href="/my-orders.html">My Orders</a></li>
+                <li><a href="/services.html">Services</a></li>
+                <li><a href="/sales.html">Sales</a></li>
+                <li><a href="/invoices.html">Invoice</a></li>
+                <li><a href="/leaderboard.html">Leaderboard</a></li>
+                <li class="manager-only"><a href="/f-team.html">F-Team</a></li>
+                <li><a href="/budget-track.html">Budget</a></li>
             </ul>
             <ul class="bottom-menu">
-                <li><a href="settings.html">Settings</a></li>
+                <li><a href="/settings.html">Settings</a></li>
                 <li><a href="#" onclick="logout()">Logout</a></li>
             </ul>
         </aside>
@@ -33,10 +31,10 @@
         <main class="main-content">
             <header class="header">
                 <h2>Customers</h2>
-                <div class="header-actions" style="display: flex; gap: 10px;">
+                <div class="header-actions">
                     <input type="text" placeholder="Search Customers...">
                     <button class="btn-dark">Search</button>
-                    <a href="new-customer.html" class="btn">New Customer</a>
+                    <a href="/new-customer.html" class="btn manager-only">New Customer</a>
                 </div>
             </header>
 
@@ -48,9 +46,6 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Mobile</th>
-                            <th>Gender</th>
-                            <th>Caste</th>
-                            <th>Address</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -62,6 +57,6 @@
         </main>
     </div>
 
-    <script src="customers.js"></script>
+    <script src="/customers.js"></script>
 </body>
 </html>

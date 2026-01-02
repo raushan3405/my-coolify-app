@@ -4,54 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Settings - Frmply</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="auth.js"></script> <!-- Auth Guard -->
+    <link rel="stylesheet" href="/style.css">
+    <script src="/auth.js"></script>
 </head>
-<body>
+<body class="app-body">
     <div class="container">
         <aside class="sidebar">
-            <div class="logo">
-                <img src="" alt="Frmply Logo" style="width:100px; height:auto;">
-            </div>
+            <div class="logo"><img src="/your-logo.png" alt="Frmply Logo" style="width:100px; height:auto;"></div>
             <ul class="menu">
-                <li><a href="index.html">Dashboard</a></li>
-                <li><a href="customers.html">Customers</a></li>
-                <li><a href="my-orders.html">My Orders</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="sales.html">Sales</a></li>
-                <li><a href="invoices.html">Invoice</a></li>
-                <li><a href="leaderboard.html">Leaderboard</a></li>
-                <li class="manager-only"><a href="f-team.html">F-Team</a></li>
-                <li><a href="budget-track.html">Budget</a></li>
+                <li><a href="/">Dashboard</a></li>
+                <li><a href="/customers.html">Customers</a></li>
+                <li><a href="/my-orders.html">My Orders</a></li>
+                <li><a href="/services.html">Services</a></li>
+                <li><a href="/sales.html">Sales</a></li>
+                <li><a href="/invoices.html">Invoice</a></li>
+                <li><a href="/leaderboard.html">Leaderboard</a></li>
+                <li class="manager-only"><a href="/f-team.html">F-Team</a></li>
+                <li><a href="/budget-track.html">Budget</a></li>
             </ul>
             <ul class="bottom-menu">
-                <li class="active"><a href="settings.html">Settings</a></li>
+                <li class="active"><a href="/settings.html">Settings</a></li>
                 <li><a href="#" onclick="logout()">Logout</a></li>
             </ul>
         </aside>
-
         <main class="main-content">
             <header class="header">
                 <h2>Settings</h2>
             </header>
-
             <section class="cards">
-                <a href="notifications.html" class="card-link" style="text-decoration: none; color: inherit;">
+                <a href="/notifications.html" class="card-link" style="text-decoration: none; color: inherit;">
                     <div class="card">
-                        <div class="card-header"><h3>Notifications</h3></div>
-                        <div class="card-body"><p>Manage and view system notifications.</p></div>
+                        <h3>Notifications</h3>
+                        <p>View system notifications</p>
                     </div>
                 </a>
-                <a href="social-media.html" class="card-link" style="text-decoration: none; color: inherit;">
+                 <a href="/support.html" class="card-link" style="text-decoration: none; color: inherit;">
                     <div class="card">
-                        <div class="card-header"><h3>Social Media</h3></div>
-                        <div class="card-body"><p>Manage social media planning data.</p></div>
+                        <h3>Support</h3>
+                        <p>Manage support tickets</p>
                     </div>
                 </a>
-                 <a href="support.html" class="card-link" style="text-decoration: none; color: inherit;">
+                 <a href="/social-media.html" class="card-link" style="text-decoration: none; color: inherit;">
                     <div class="card">
-                        <div class="card-header"><h3>Support</h3></div>
-                        <div class="card-body"><p>View and manage support tickets.</p></div>
+                        <h3>Social Media</h3>
+                        <p>Plan your social media posts</p>
                     </div>
                 </a>
             </section>

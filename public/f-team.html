@@ -4,41 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team Management - Frmply</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="auth.js"></script> <!-- Auth Guard -->
+    <link rel="stylesheet" href="/style.css">
+    <script src="/auth.js"></script>
 </head>
-<body>
+<body class="app-body">
     <div class="container">
         <aside class="sidebar">
-            <div class="logo">
-                <img src="" alt="Frmply Logo" style="width:100px; height:auto;">
-            </div>
+            <div class="logo"><img src="/your-logo.png" alt="Frmply Logo" style="width:100px; height:auto;"></div>
             <ul class="menu">
-                <li><a href="index.html">Dashboard</a></li>
-                <li><a href="customers.html">Customers</a></li>
-                <li><a href="my-orders.html">My Orders</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="sales.html">Sales</a></li>
-                <li><a href="invoices.html">Invoice</a></li>
-                <li><a href="leaderboard.html">Leaderboard</a></li>
-                <!-- The link below is now a manager-only element -->
-                <li class="manager-only"><a href="f-team.html">F-Team</a></li>
-                <li><a href="budget-track.html">Budget</a></li>
+                <li><a href="/">Dashboard</a></li>
+                <li><a href="/customers.html">Customers</a></li>
+                <li><a href="/my-orders.html">My Orders</a></li>
+                <li><a href="/services.html">Services</a></li>
+                <li><a href="/sales.html">Sales</a></li>
+                <li><a href="/invoices.html">Invoice</a></li>
+                <li><a href="/leaderboard.html">Leaderboard</a></li>
+                <li class="active manager-only"><a href="/f-team.html">F-Team</a></li>
+                <li><a href="/budget-track.html">Budget</a></li>
             </ul>
             <ul class="bottom-menu">
-                <li><a href="settings.html">Settings</a></li>
+                <li><a href="/settings.html">Settings</a></li>
                 <li><a href="#" onclick="logout()">Logout</a></li>
             </ul>
         </aside>
-
         <main class="main-content">
             <header class="header">
                 <h2>Team Management</h2>
                 <div class="header-actions">
-                    <a href="new-team-member.html" class="btn">New Team Member</a>
+                    <a href="/new-team-member.html" class="btn">New Team Member</a>
                 </div>
             </header>
-
             <section class="table-container">
                 <table id="teamTable">
                     <thead>
@@ -46,19 +41,17 @@
                             <th>FTM Code</th>
                             <th>Name</th>
                             <th>Role</th>
-                            <th>Email</th>
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Data will be populated by f-team.js -->
+                        <!-- Data populated by f-team.js -->
                     </tbody>
                 </table>
             </section>
         </main>
     </div>
-
-    <script src="f-team.js"></script>
+    <script src="/f-team.js"></script>
 </body>
 </html>

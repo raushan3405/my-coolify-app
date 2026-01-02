@@ -4,78 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Orders - Frmply</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="auth.js"></script> <!-- Auth Guard -->
+    <link rel="stylesheet" href="/style.css">
+    <script src="/auth.js"></script>
 </head>
-<body>
+<body class="app-body">
     <div class="container">
         <aside class="sidebar">
-            <div class="logo">
-                <img src="" alt="Frmply Logo" style="width:100px; height:auto;">
-            </div>
+            <div class="logo"><img src="/your-logo.png" alt="Frmply Logo" style="width:100px; height:auto;"></div>
             <ul class="menu">
-                <li><a href="index.html">Dashboard</a></li>
-                <li><a href="customers.html">Customers</a></li>
-                <li class="active"><a href="my-orders.html">My Orders</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="sales.html">Sales</a></li>
-                <li><a href="invoices.html">Invoice</a></li>
-                <li><a href="leaderboard.html">Leaderboard</a></li>
-                <li class="manager-only"><a href="f-team.html">F-Team</a></li>
-                <li><a href="budget-track.html">Budget</a></li>
+                <li><a href="/">Dashboard</a></li>
+                <li><a href="/customers.html">Customers</a></li>
+                <li class="active"><a href="/my-orders.html">My Orders</a></li>
+                <li><a href="/services.html">Services</a></li>
+                <li><a href="/sales.html">Sales</a></li>
+                <li><a href="/invoices.html">Invoice</a></li>
+                <li><a href="/leaderboard.html">Leaderboard</a></li>
+                <li class="manager-only"><a href="/f-team.html">F-Team</a></li>
+                <li><a href="/budget-track.html">Budget</a></li>
             </ul>
             <ul class="bottom-menu">
-                <li><a href="settings.html">Settings</a></li>
+                <li><a href="/settings.html">Settings</a></li>
                 <li><a href="#" onclick="logout()">Logout</a></li>
             </ul>
         </aside>
-
         <main class="main-content">
             <header class="header">
                 <h2>My Orders</h2>
-                <div class="header-actions" style="display: flex; gap: 10px; align-items: center;">
-                    <span>Start Date: <input type="date"></span>
-                    <span>End Date: <input type="date"></span>
-                    <a href="new-order.html" class="btn">New Orders</a>
+                <div class="header-actions">
+                    <a href="/new-order.html" class="btn">New Orders</a>
                 </div>
             </header>
-
-            <section class="cards">
-                <div class="card card-revenue">
-                    <div class="card-header"><h3>Total Revenue</h3></div>
-                    <div class="card-body"><p>₹ 0</p></div>
-                </div>
-                 <div class="card">
-                    <div class="card-header"><h3>Total Order</h3></div>
-                    <div class="card-body"><p>0</p></div>
-                </div>
-                <div class="card">
-                    <div class="card-header"><h3>Pending</h3></div>
-                    <div class="card-body"><p>0</p></div>
-                </div>
-                <div class="card">
-                    <div class="card-header"><h3>Site Crash</h3></div>
-                    <div class="card-body"><p>0</p></div>
-                </div>
-                <div class="card">
-                    <div class="card-header"><h3>Complete</h3></div>
-                    <div class="card-body"><p>0</p></div>
-                </div>
-            </section>
-
             <section class="table-container">
                 <table id="ordersTable">
                     <thead>
                         <tr>
                             <th>Date</th>
                             <th>Time</th>
-                            <th>Cust. ID</th>
                             <th>Customer's Name</th>
-                            <th>FS_Code</th>
                             <th>Service Name</th>
-                            <th>FTM_Name</th>
                             <th>Status</th>
-                            <th>Receiving</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -85,7 +53,6 @@
             </section>
         </main>
     </div>
-
-    <script src="my-orders.js"></script>
+    <script src="/my-orders.js"></script>
 </body>
 </html>

@@ -4,22 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Details - Frmply</title>
-    <link rel="stylesheet" href="/assets/style.css"> <!-- Corrected Path -->
-    <script src="/assets/auth.js"></script> <!-- Corrected Path -->
-    <style>
-        .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; background: #fff; padding: 20px; border-radius: 8px; }
-        .details-grid .form-group { margin-bottom: 0; }
-        .details-grid label { font-weight: bold; color: #555; }
-        .details-grid p { margin: 0; padding: 8px; background: #f4f4f4; border-radius: 4px; }
-        .documents-section { margin-top: 20px; background: #fff; padding: 20px; border-radius: 8px; }
-    </style>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/auth.js"></script>
 </head>
-<body>
+<body class="app-body">
     <div class="container">
         <aside class="sidebar">
-            <div class="logo">
-                <img src="" alt="Frmply Logo" style="width:100px; height:auto;">
-            </div>
+            <div class="logo"><img src="/your-logo.png" alt="Frmply Logo" style="width:100px; height:auto;"></div>
             <ul class="menu">
                 <li><a href="/">Dashboard</a></li>
                 <li class="active"><a href="/customers.html">Customers</a></li>
@@ -36,26 +27,23 @@
                 <li><a href="#" onclick="logout()">Logout</a></li>
             </ul>
         </aside>
-
         <main class="main-content">
             <header class="header">
                 <h2 id="customer-name-header">Customer Details</h2>
-                <div class="header-actions" style="display: flex; gap: 10px;">
+                <div class="header-actions">
                     <a href="/customers.html" class="btn btn-dark">&larr; Back to List</a>
+                    <!-- Action buttons are added by JS -->
                 </div>
             </header>
-
-            <section id="customer-details-container" class="details-grid">
-                <!-- Customer data will be populated here by JS -->
+            <section id="customer-details-container">
+                <!-- Customer details will be populated here -->
             </section>
-
             <section class="documents-section">
                 <h3>Uploaded Documents</h3>
                 <ul id="document-list"></ul>
             </section>
         </main>
     </div>
-
-    <script src="/assets/customer-details.js"></script> <!-- Corrected Path -->
+    <script src="/customer-details.js"></script>
 </body>
 </html>

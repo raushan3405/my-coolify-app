@@ -4,58 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Social Media Planner - Frmply</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
+    <script src="/auth.js"></script>
 </head>
-<body>
+<body class="app-body">
     <div class="container">
         <aside class="sidebar">
-            <div class="logo">
-                <img src="" alt="Frmply Logo" style="width:100px; height:auto;">
-            </div>
+            <div class="logo"><img src="/your-logo.png" alt="Frmply Logo" style="width:100px; height:auto;"></div>
             <ul class="menu">
-                 <li><a href="index.html">Dashboard</a></li>
-                <li><a href="customers.html">Customers</a></li>
-                <li><a href="my-orders.html">My Orders</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="sales.html">Sales</a></li>
-                <li><a href="invoices.html">Invoice</a></li>
-                <li><a href="leaderboard.html">Leaderboard</a></li>
-                <li><a href="f-team.html">F-Team</a></li>
-                <li><a href="budget-track.html">Budget</a></li>
+                <li><a href="/">Dashboard</a></li>
+                <li><a href="/customers.html">Customers</a></li>
+                <li><a href="/my-orders.html">My Orders</a></li>
+                <li><a href="/services.html">Services</a></li>
+                <li><a href="/sales.html">Sales</a></li>
+                <li><a href="/invoices.html">Invoice</a></li>
+                <li><a href="/leaderboard.html">Leaderboard</a></li>
+                <li class="manager-only"><a href="/f-team.html">F-Team</a></li>
+                <li><a href="/budget-track.html">Budget</a></li>
             </ul>
             <ul class="bottom-menu">
-                <li class="active"><a href="settings.html">Settings</a></li>
+                <li class="active"><a href="/settings.html">Settings</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
             </ul>
         </aside>
-
         <main class="main-content">
             <header class="header">
                 <h2>Social Media Planner</h2>
                 <div class="header-actions">
-                    <a href="settings.html" class="btn btn-dark">&larr; Back to Settings</a>
-                    <a href="new-social-post.html" class="btn">New Post</a>
+                    <a href="/settings.html" class="btn btn-dark">&larr; Back to Settings</a>
+                    <a href="/new-social-post.html" class="btn">New Post</a>
                 </div>
             </header>
-
             <section class="table-container">
                 <table id="socialPostsTable">
-                    <thead>
-                        <tr>
-                            <th>Platform</th>
-                            <th>Content</th>
-                            <th>Scheduled Date</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Data will be populated by social-media.js -->
-                    </tbody>
+                    <!-- table content -->
                 </table>
             </section>
         </main>
     </div>
-
-    <script src="social-media.js"></script>
+    <script src="/social-media.js"></script>
 </body>
 </html>

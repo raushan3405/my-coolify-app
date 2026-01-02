@@ -4,60 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invoice - Frmply</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
+    <script src="/auth.js"></script>
     <style>
-        .invoice-box { max-width: 800px; margin: auto; padding: 30px; border: 1px solid #eee; box-shadow: 0 0 10px rgba(0, 0, 0, .15); font-size: 16px; line-height: 24px; font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; color: #555; background: #fff; }
-        .invoice-box table { width: 100%; line-height: inherit; text-align: left; }
-        .invoice-box table td { padding: 5px; vertical-align: top; }
-        .invoice-box table tr.top table td { padding-bottom: 20px; }
-        .invoice-box table tr.top table td.title { font-size: 45px; line-height: 45px; color: #333; }
-        .invoice-box table tr.information table td { padding-bottom: 40px; }
-        .invoice-box table tr.heading td { background: #eee; border-bottom: 1px solid #ddd; font-weight: bold; }
-        .invoice-box table tr.details td { padding-bottom: 20px; }
-        .invoice-box table tr.item td { border-bottom: 1px solid #eee; }
-        .invoice-box table tr.item.last td { border-bottom: none; }
-        .invoice-box table tr.total td:nth-child(2) { border-top: 2px solid #eee; font-weight: bold; text-align: right; }
-        .no-print { margin: 20px 0; }
-    </style>
-    <style media="print">
-        body, .container { background: #fff !important; }
-        .sidebar, .header, .no-print { display: none !important; }
-        .main-content { padding: 0 !important; }
-        .invoice-box { max-width: 100%; margin: 0; border: none; box-shadow: none; }
+        /* Invoice-specific styles */
     </style>
 </head>
-<body>
+<body class="app-body">
     <div class="container">
         <aside class="sidebar no-print">
-            <div class="logo">
-                <img src="" alt="Frmply Logo" style="width:100px; height:auto;">
-            </div>
+            <div class="logo"><img src="/your-logo.png" alt="Frmply Logo" style="width:100px; height:auto;"></div>
             <ul class="menu">
-                <li><a href="index.html">Dashboard</a></li>
-                <li><a href="customers.html">Customers</a></li>
-                <li><a href="my-orders.html">My Orders</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="sales.html">Sales</a></li>
-                <li class="active"><a href="invoices.html">Invoice</a></li>
-                <li><a href="leaderboard.html">Leaderboard</a></li>
-                <li><a href="f-team.html">F-Team</a></li>
-                <li><a href="budget-track.html">Budget</a></li>
+                <li><a href="/">Dashboard</a></li>
+                <li><a href="/customers.html">Customers</a></li>
+                <li><a href="/my-orders.html">My Orders</a></li>
+                <li><a href="/services.html">Services</a></li>
+                <li><a href="/sales.html">Sales</a></li>
+                <li class="active"><a href="/invoices.html">Invoice</a></li>
+                <li><a href="/leaderboard.html">Leaderboard</a></li>
+                <li class="manager-only"><a href="/f-team.html">F-Team</a></li>
+                <li><a href="/budget-track.html">Budget</a></li>
             </ul>
             <ul class="bottom-menu">
-                <li><a href="settings.html">Settings</a></li>
+                <li><a href="/settings.html">Settings</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
             </ul>
         </aside>
         <main class="main-content">
             <div class="no-print">
-                <a href="invoices.html" class="btn btn-dark">&larr; Back to Invoices</a>
-                <button onclick="window.print()" class="btn" style="float: right;">Print Invoice</button>
+                <a href="/invoices.html" class="btn btn-dark">&larr; Back to Invoices</a>
+                <button onclick="window.print()" class="btn">Print Invoice</button>
             </div>
-
             <div class="invoice-box" id="invoice-details">
-                <p style="text-align:center;">Loading invoice details...</p>
+                <!-- Invoice content will be dynamically inserted here -->
             </div>
         </main>
     </div>
-    <script src="invoice-view.js"></script>
+    <script src="/invoice-view.js"></script>
 </body>
 </html>

@@ -4,63 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Income - Frmply</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
+    <script src="/auth.js"></script>
 </head>
-<body>
+<body class="app-body">
     <div class="container">
         <aside class="sidebar">
-            <div class="logo">
-                <img src="" alt="Frmply Logo" style="width:100px; height:auto;">
-            </div>
+            <div class="logo"><img src="/your-logo.png" alt="Frmply Logo" style="width:100px; height:auto;"></div>
             <ul class="menu">
-                <li><a href="index.html">Dashboard</a></li>
-                <li><a href="customers.html">Customers</a></li>
-                <li><a href="my-orders.html">My Orders</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="sales.html">Sales</a></li>
-                <li><a href="invoices.html">Invoice</a></li>
-                <li><a href="leaderboard.html">Leaderboard</a></li>
-                <li><a href="f-team.html">F-Team</a></li>
-                <li class="active"><a href="budget-track.html">Budget</a></li>
+                <li><a href="/">Dashboard</a></li>
+                <li><a href="/customers.html">Customers</a></li>
+                <li><a href="/my-orders.html">My Orders</a></li>
+                <li><a href="/services.html">Services</a></li>
+                <li><a href="/sales.html">Sales</a></li>
+                <li><a href="/invoices.html">Invoice</a></li>
+                <li><a href="/leaderboard.html">Leaderboard</a></li>
+                <li class="manager-only"><a href="/f-team.html">F-Team</a></li>
+                <li class="active"><a href="/budget-track.html">Budget</a></li>
             </ul>
             <ul class="bottom-menu">
-                <li><a href="settings.html">Settings</a></li>
+                <li><a href="/settings.html">Settings</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
             </ul>
         </aside>
-
         <main class="main-content">
             <header class="header">
-                <h2>Edit Income Record</h2>
-                 <a href="budget-income.html" class="btn btn-dark">&larr; Back to Income</a>
+                <h2>Edit Income</h2>
+                <a href="/budget-income.html" class="btn btn-dark">&larr; Back to Income</a>
             </header>
-
-            <section class="form-container" style="background: #fff; padding: 20px; border-radius: 8px;">
+            <section class="form-container">
                 <form id="editIncomeForm">
-                    <input type="hidden" id="income_id" name="income_id">
-                    
-                    <div class="form-group">
-                        <label for="source">Income Source</label>
-                        <input type="text" id="source" name="source" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="amount">Amount</label>
-                        <input type="number" id="amount" name="amount" step="0.01" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="income_date">Date</label>
-                        <input type="date" id="income_date" name="income_date" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="description">Description (Optional)</label>
-                        <textarea id="description" name="description" rows="3"></textarea>
-                    </div>
-                    <button type="submit" class="btn">Update Income</button>
+                    <!-- Form content -->
                 </form>
-                 <div id="form-message" style="margin-top: 15px;"></div>
             </section>
         </main>
     </div>
-
-    <script src="edit-income.js"></script>
+    <script src="/edit-income.js"></script>
 </body>
 </html>

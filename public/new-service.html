@@ -4,77 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Service - Frmply</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
+    <script src="/auth.js"></script>
 </head>
-<body>
+<body class="app-body">
     <div class="container">
         <aside class="sidebar">
-            <div class="logo">
-                <img src="" alt="Frmply Logo" style="width:100px; height:auto;">
-            </div>
+            <div class="logo"><img src="/your-logo.png" alt="Frmply Logo" style="width:100px; height:auto;"></div>
             <ul class="menu">
-                 <li><a href="index.html">Dashboard</a></li>
-                <li><a href="customers.html">Customers</a></li>
-                <li><a href="my-orders.html">My Orders</a></li>
-                <li class="active"><a href="services.html">Services</a></li>
-                <li><a href="sales.html">Sales</a></li>
-                <li><a href="invoices.html">Invoice</a></li>
-                <li><a href="leaderboard.html">Leaderboard</a></li>
-                <li><a href="f-team.html">F-Team</a></li>
-                <li><a href="budget-track.html">Budget</a></li>
+                <li><a href="/">Dashboard</a></li>
+                <li><a href="/customers.html">Customers</a></li>
+                <li><a href="/my-orders.html">My Orders</a></li>
+                <li class="active"><a href="/services.html">Services</a></li>
+                <li><a href="/sales.html">Sales</a></li>
+                <li><a href="/invoices.html">Invoice</a></li>
+                <li><a href="/leaderboard.html">Leaderboard</a></li>
+                <li class="manager-only"><a href="/f-team.html">F-Team</a></li>
+                <li><a href="/budget-track.html">Budget</a></li>
             </ul>
             <ul class="bottom-menu">
-                <li><a href="settings.html">Settings</a></li>
+                <li><a href="/settings.html">Settings</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
             </ul>
         </aside>
-
         <main class="main-content">
             <header class="header">
                 <h2>Create New Service</h2>
-                <a href="services.html" class="btn btn-dark">&larr; Back to Services</a>
+                <a href="/services.html" class="btn btn-dark">&larr; Back to Services</a>
             </header>
-
-            <section class="form-container" style="background: #fff; padding: 20px; border-radius: 8px;">
+            <section class="form-container">
                 <form id="newServiceForm">
-                    <div class="form-group">
-                        <label for="fs_code">Service Code (FS-Code)</label>
-                        <input type="text" id="fs_code" name="fs_code" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="service_name">Service Name</label>
-                        <input type="text" id="service_name" name="service_name" required>
-                    </div>
-                     <div class="form-group">
-                        <label for="price">Price</label>
-                        <input type="number" id="price" name="price" step="0.01" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="category">Category</label>
-                        <input type="text" id="category" name="category">
-                    </div>
-                    <div class="form-group">
-                        <label for="advt_no">Advt. No.</label>
-                        <input type="text" id="advt_no" name="advt_no">
-                    </div>
-                    <div class="form-group">
-                        <label for="start_date">Start Date</label>
-                        <input type="date" id="start_date" name="start_date">
-                    </div>
-                     <div class="form-group">
-                        <label for="end_date">End Date</label>
-                        <input type="date" id="end_date" name="end_date">
-                    </div>
-                     <div class="form-group">
-                        <label for="age_criteria">Age Criteria</label>
-                        <input type="text" id="age_criteria" name="age_criteria">
-                    </div>
-                    <button type="submit" class="btn">Save Service</button>
+                    <!-- Form content -->
                 </form>
-                 <div id="form-message" style="margin-top: 15px;"></div>
             </section>
         </main>
     </div>
-
-    <script src="new-service.js"></script>
+    <script src="/new-service.js"></script>
 </body>
 </html>

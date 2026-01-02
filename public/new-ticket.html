@@ -4,86 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Support Ticket - Frmply</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
+    <script src="/auth.js"></script>
 </head>
-<body>
+<body class="app-body">
     <div class="container">
         <aside class="sidebar">
-            <!-- Sidebar content remains the same -->
-            <div class="logo">
-                <img src="" alt="Frmply Logo" style="width:100px; height:auto;">
-            </div>
+            <div class="logo"><img src="/your-logo.png" alt="Frmply Logo" style="width:100px; height:auto;"></div>
             <ul class="menu">
-                <li><a href="index.html">Dashboard</a></li>
-                <li><a href="customers.html">Customers</a></li>
-                <li><a href="my-orders.html">My Orders</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="sales.html">Sales</a></li>
-                <li><a href="invoices.html">Invoice</a></li>
-                <li><a href="leaderboard.html">Leaderboard</a></li>
-                <li><a href="f-team.html">F-Team</a></li>
-                <li><a href="budget-track.html">Budget</a></li>
+                <li><a href="/">Dashboard</a></li>
+                <li><a href="/customers.html">Customers</a></li>
+                <li><a href="/my-orders.html">My Orders</a></li>
+                <li><a href="/services.html">Services</a></li>
+                <li><a href="/sales.html">Sales</a></li>
+                <li><a href="/invoices.html">Invoice</a></li>
+                <li><a href="/leaderboard.html">Leaderboard</a></li>
+                <li class="manager-only"><a href="/f-team.html">F-Team</a></li>
+                <li><a href="/budget-track.html">Budget</a></li>
             </ul>
             <ul class="bottom-menu">
-                <li class="active"><a href="settings.html">Settings</a></li>
+                <li class="active"><a href="/settings.html">Settings</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
             </ul>
         </aside>
-
         <main class="main-content">
             <header class="header">
-                <h2>Create New Support Ticket</h2>
-                <a href="support.html" class="btn btn-dark">&larr; Back to Tickets</a>
+                <h2>Create New Ticket</h2>
+                <a href="/support.html" class="btn btn-dark">&larr; Back to Tickets</a>
             </header>
-
-            <section class="form-container" style="background: #fff; padding: 20px; border-radius: 8px;">
+            <section class="form-container">
                 <form id="newTicketForm">
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="subject" required>
-                    </div>
-                     <div class="form-group">
-                        <label for="description">Description</label>
-                        <textarea id="description" name="description" rows="5" required></textarea>
-                    </div>
-
-                    <hr style="margin: 20px 0;">
-
-                    <div class="form-group">
-                        <label for="cust_id">Link to Existing Customer (Optional)</label>
-                        <select id="cust_id" name="cust_id">
-                            <option value="">Loading Customers...</option>
-                        </select>
-                    </div>
-
-                     <p style="text-align: center; margin: 15px 0;">OR, if not for an existing customer:</p>
-
-                    <div class="form-group">
-                        <label for="submitter_name">Your Name</label>
-                        <input type="text" id="submitter_name" name="submitter_name">
-                    </div>
-                     <div class="form-group">
-                        <label for="submitter_email">Your Email</label>
-                        <input type="email" id="submitter_email" name="submitter_email">
-                    </div>
-
-                     <hr style="margin: 20px 0;">
-
-                      <div class="form-group">
-                        <label for="priority">Priority</label>
-                        <select id="priority" name="priority">
-                            <option value="Low">Low</option>
-                            <option value="Medium" selected>Medium</option>
-                            <option value="High">High</option>
-                        </select>
-                    </div>
-
-                    <button type="submit" class="btn">Submit Ticket</button>
+                    <!-- Form content -->
                 </form>
-                 <div id="form-message" style="margin-top: 15px;"></div>
             </section>
         </main>
     </div>
-
-    <script src="new-ticket.js"></script>
+    <script src="/new-ticket.js"></script>
 </body>
 </html>
