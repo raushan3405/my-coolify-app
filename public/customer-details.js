@@ -77,7 +77,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 try {
                     const response = await fetch(`/api/customers/${customerId}`, {
                         method: 'DELETE',
-                        headers: { 'Authorization': `Bearer ${token}` } // Pass token for protected routes
                     });
                     const result = await response.json();
                     if(response.ok){

@@ -12,9 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function loadCustomers(searchTerm = '') {
         try {
             const url = searchTerm ? `/api/customers?search=${encodeURIComponent(searchTerm)}` : '/api/customers';
-            const response = await fetch(url, {
-                headers: { 'Authorization': `Bearer ${token}` }
-            });
+            const response = await fetch(url);
 
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             

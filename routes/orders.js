@@ -82,7 +82,79 @@ router.post('/', async (req, res) => {
  * @access  Public
  */
 router.put('/:id/status', async (req, res) => {
-  // ... (existing PUT logic remains the same)
+  const { id } = req.params;
+  const { status } = req.body;
+
+  const allowedStatuses = ['New', 'In Progress', 'Completed', 'Site Crash', 'Cancelled'];
+  if (!status || !allowedStatuses.includes(status)) {
+    return res.status(400).json({ msg: 'Invalid status.' });
+  }
+
+  const client = await db.pool.connect();
+  try {
+    await client.query('BEGIN');
+
+    const orderRes = await client.query(
+      `SELECT o.order_id, o.cust_id, o.fs_code, o.ftm_code, o.status, o.govt_cost, o.service_cost,
+              c.name as customer_name, s.service_name, ft.name as ftm_name
+         FROM orders o
+         LEFT JOIN customers c ON o.cust_id = c.cust_id
+         LEFT JOIN services s ON o.fs_code = s.fs_code
+         LEFT JOIN f_team ft ON o.ftm_code = ft.ftm_code
+        WHERE o.order_id = $1`,
+      [id]
+    );
+
+    if (orderRes.rowCount === 0) {
+      await client.query('ROLLBACK');
+      return res.status(404).json({ msg: 'Order not found.' });
+    }
+
+    const order = orderRes.rows[0];
+    const previousStatus = order.status;
+
+    const updatedOrderRes = await client.query(
+      'UPDATE orders SET status = $1 WHERE order_id = $2 RETURNING *',
+      [status, id]
+    );
+
+    if (status === 'Completed') {
+      const saleAmount = (parseFloat(order.govt_cost) || 0) + (parseFloat(order.service_cost) || 0);
+      await client.query(
+        `INSERT INTO sales (order_id, cust_id, fs_code, ftm_code, sale_amount, customer_name, service_name, ftm_name)
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+         ON CONFLICT (order_id) DO UPDATE SET
+           cust_id = EXCLUDED.cust_id,
+           fs_code = EXCLUDED.fs_code,
+           ftm_code = EXCLUDED.ftm_code,
+           sale_amount = EXCLUDED.sale_amount,
+           customer_name = EXCLUDED.customer_name,
+           service_name = EXCLUDED.service_name,
+           ftm_name = EXCLUDED.ftm_name`,
+        [
+          order.order_id,
+          order.cust_id,
+          order.fs_code,
+          order.ftm_code,
+          saleAmount,
+          order.customer_name || null,
+          order.service_name || null,
+          order.ftm_name || null,
+        ]
+      );
+    } else if (previousStatus === 'Completed') {
+      await client.query('DELETE FROM sales WHERE order_id = $1', [id]);
+    }
+
+    await client.query('COMMIT');
+    res.json({ success: true, order: updatedOrderRes.rows[0] });
+  } catch (err) {
+    await client.query('ROLLBACK');
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  } finally {
+    client.release();
+  }
 });
 
 module.exports = router;

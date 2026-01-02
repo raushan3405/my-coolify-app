@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const JWT_SECRET = process.env.JWT_SECRET || 'your_default_super_secret_key';
+const JWT_SECRET = process.env.JWT_SECRET;
 
 module.exports = function(req, res, next) {
     // Get token from cookie

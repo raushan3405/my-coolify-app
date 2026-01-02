@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const db = require('../db');
 
-const JWT_SECRET = process.env.JWT_SECRET || 'your_default_super_secret_key';
+const JWT_SECRET = process.env.JWT_SECRET;
 
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
