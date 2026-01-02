@@ -2,8 +2,25 @@ document.addEventListener('DOMContentLoaded', async () => {
     const detailsContainer = document.getElementById('customer-details-container');
     const nameHeader = document.getElementById('customer-name-header');
     const docList = document.getElementById('document-list');
-    const headerActions = document.querySelector('.header-actions');
+    const editBtn = document.getElementById('cd-edit-btn');
+    const deleteBtn = document.getElementById('cd-delete-btn');
     const customerId = new URLSearchParams(window.location.search).get('id');
+
+    const fields = {
+        cust_id: document.getElementById('cd-cust-id'),
+        full_name: document.getElementById('cd-full-name'),
+        email: document.getElementById('cd-email'),
+        mobile_number: document.getElementById('cd-mobile'),
+        date_of_birth: document.getElementById('cd-dob'),
+        gender: document.getElementById('cd-gender'),
+        mother_name: document.getElementById('cd-mother'),
+        father_name: document.getElementById('cd-father'),
+        caste: document.getElementById('cd-caste'),
+        address: document.getElementById('cd-address'),
+        pin_code: document.getElementById('cd-pin'),
+        identification_1: document.getElementById('cd-id1'),
+        identification_2: document.getElementById('cd-id2'),
+    };
 
     if (!customerId) {
         detailsContainer.innerHTML = '<p style="color:red; text-align:center;">No customer ID provided. <a href="customers.html">Go back</a>.</p>';
@@ -17,51 +34,46 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
         const customer = await response.json();
 
-        nameHeader.textContent = customer.full_name;
-        detailsContainer.innerHTML = `
-            <div class="form-group"><label>Customer ID</label><p>${customer.cust_id}</p></div>
-            <div class="form-group"><label>Full Name</label><p>${customer.full_name}</p></div>
-            <div class="form-group"><label>Email</label><p>${customer.email || 'N/A'}</p></div>
-            <div class="form-group"><label>Mobile Number</label><p>${customer.mobile_number}</p></div>
-            <div class="form-group"><label>Date of Birth</label><p>${customer.date_of_birth || 'N/A'}</p></div>
-            <div class="form-group"><label>Gender</label><p>${customer.gender || 'N/A'}</p></div>
-            <div class="form-group"><label>Mother's Name</label><p>${customer.mother_name || 'N/A'}</p></div>
-            <div class="form-group"><label>Father's Name</label><p>${customer.father_name || 'N/A'}</p></div>
-            <div class="form-group"><label>Caste</label><p>${customer.caste || 'N/A'}</p></div>
-            <div class="form-group"><label>Address</label><p>${customer.address || 'N/A'}</p></div>
-            <div class="form-group"><label>Pin Code</label><p>${customer.pin_code || 'N/A'}</p></div>
-            <div class="form-group"><label>Identification 1</label><p>${customer.identification_1 || 'N/A'}</p></div>
-            <div class="form-group"><label>Identification 2</label><p>${customer.identification_2 || 'N/A'}</p></div>
-        `;
+        nameHeader.textContent = 'CUSTOMER DETAILS';
+        if (fields.cust_id) fields.cust_id.value = customer.cust_id || '';
+        if (fields.full_name) fields.full_name.value = customer.full_name || '';
+        if (fields.email) fields.email.value = customer.email || '';
+        if (fields.mobile_number) fields.mobile_number.value = customer.mobile_number || '';
+        if (fields.date_of_birth) fields.date_of_birth.value = customer.date_of_birth || '';
+        if (fields.gender) fields.gender.value = customer.gender || '';
+        if (fields.mother_name) fields.mother_name.value = customer.mother_name || '';
+        if (fields.father_name) fields.father_name.value = customer.father_name || '';
+        if (fields.caste) fields.caste.value = customer.caste || '';
+        if (fields.address) fields.address.value = customer.address || '';
+        if (fields.pin_code) fields.pin_code.value = customer.pin_code || '';
+        if (fields.identification_1) fields.identification_1.value = customer.identification_1 || '';
+        if (fields.identification_2) fields.identification_2.value = customer.identification_2 || '';
 
         docList.innerHTML = '';
         if (customer.documents && customer.documents.length > 0) {
             customer.documents.forEach(doc => {
-                const li = document.createElement('li');
                 const webPath = doc.file_path.replace('public/', ''); 
-                li.innerHTML = `<a href="${webPath}" target="_blank">${doc.document_name}</a>`;
-                docList.appendChild(li);
+                const row = document.createElement('div');
+                row.className = 'cd-doc-row';
+                row.innerHTML = `
+                    <div class="cd-doc-name">${doc.document_name || 'Document'}</div>
+                    <a class="btn cd-doc-btn" href="${webPath}" target="_blank">VIEW</a>
+                `;
+                docList.appendChild(row);
             });
         } else {
-            docList.innerHTML = '<li>No documents uploaded for this customer.</li>';
+            docList.innerHTML = '<div class="cd-doc-empty">No documents uploaded for this customer.</div>';
         }
 
-        // --- Authorization Check for Action Buttons ---
         if (isManager()) {
-            const editButton = document.createElement('a');
-            editButton.href = `edit-customer.html?id=${customer.cust_id}`;
-            editButton.className = 'btn';
-            editButton.textContent = 'Edit';
-            editButton.style.backgroundColor = '#ffc107';
-
-            const deleteButton = document.createElement('button');
-            deleteButton.className = 'btn btn-delete';
-            deleteButton.textContent = 'Delete';
-            deleteButton.style.backgroundColor = '#dc3545';
-            deleteButton.dataset.id = customer.cust_id;
-            
-            headerActions.appendChild(editButton);
-            headerActions.appendChild(deleteButton);
+            if (editBtn) {
+                editBtn.href = `edit-customer.html?id=${customer.cust_id}`;
+                editBtn.style.display = 'inline-flex';
+            }
+            if (deleteBtn) {
+                deleteBtn.dataset.id = customer.cust_id;
+                deleteBtn.style.display = 'inline-flex';
+            }
         }
 
     } catch (error) {
@@ -70,12 +82,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // --- Delete Functionality (only available to managers) ---
-    headerActions.addEventListener('click', async (event) => {
-        if(event.target.classList.contains('btn-delete') && isManager()){
-            const customerId = event.target.dataset.id;
-            if(confirm(`Are you sure you want to permanently delete customer ${customerId}?`)){
+    if (deleteBtn) {
+        deleteBtn.addEventListener('click', async (event) => {
+            if (!isManager()) return;
+            const id = event.target.dataset.id;
+            if (!id) return;
+            if(confirm(`Are you sure you want to permanently delete customer ${id}?`)){
                 try {
-                    const response = await fetch(`/api/customers/${customerId}`, {
+                    const response = await fetch(`/api/customers/${id}`, {
                         method: 'DELETE',
                     });
                     const result = await response.json();
@@ -89,6 +103,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                     alert(`Error: ${err.message}`);
                 }
             }
-        }
-    });
+        });
+    }
 });

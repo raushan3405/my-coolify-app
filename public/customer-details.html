@@ -27,20 +27,40 @@
                 <li><a href="#" onclick="logout()">Logout</a></li>
             </ul>
         </aside>
-        <main class="main-content">
-            <header class="header">
-                <h2 id="customer-name-header">Customer Details</h2>
-                <div class="header-actions">
-                    <a href="/customers.html" class="btn btn-dark">&larr; Back to List</a>
-                    <!-- Action buttons are added by JS -->
+        <main class="main-content customer-details-page">
+            <div class="cd-topbar">
+                <div class="cd-topbar-left"></div>
+                <div class="cd-title" id="customer-name-header">CUSTOMER DETAILS</div>
+                <div class="cd-topbar-actions">
+                    <a id="cd-edit-btn" class="btn cd-action-btn" href="#" style="display:none;">EDIT</a>
+                    <button id="cd-delete-btn" class="btn cd-action-btn" type="button" style="display:none;">DELETE</button>
                 </div>
-            </header>
-            <section id="customer-details-container">
-                <!-- Customer details will be populated here -->
+            </div>
+            <div class="cd-divider"></div>
+
+            <section class="cd-fields" id="customer-details-container">
+                <div class="cd-col">
+                    <div class="cd-row"><label>Cust_ID :</label><input id="cd-cust-id" type="text" readonly></div>
+                    <div class="cd-row"><label>Customer's Name :</label><input id="cd-full-name" type="text" readonly></div>
+                    <div class="cd-row"><label>Email :</label><input id="cd-email" type="text" readonly></div>
+                    <div class="cd-row"><label>Mob. NO :</label><input id="cd-mobile" type="text" readonly></div>
+                    <div class="cd-row"><label>Date Of Birth :</label><input id="cd-dob" type="text" readonly></div>
+                    <div class="cd-row"><label>Gender :</label><input id="cd-gender" type="text" readonly></div>
+                    <div class="cd-row"><label>Mother's Name :</label><input id="cd-mother" type="text" readonly></div>
+                    <div class="cd-row"><label>Father's Name :</label><input id="cd-father" type="text" readonly></div>
+                </div>
+                <div class="cd-col">
+                    <div class="cd-row"><label>Caste :</label><input id="cd-caste" type="text" readonly></div>
+                    <div class="cd-row"><label>Address :</label><input id="cd-address" type="text" readonly></div>
+                    <div class="cd-row"><label>Pin Code :</label><input id="cd-pin" type="text" readonly></div>
+                    <div class="cd-row"><label>Identification 1 :</label><input id="cd-id1" type="text" readonly></div>
+                    <div class="cd-row"><label>Identification 2 :</label><input id="cd-id2" type="text" readonly></div>
+                </div>
             </section>
-            <section class="documents-section">
-                <h3>Uploaded Documents</h3>
-                <ul id="document-list"></ul>
+
+            <section class="cd-documents">
+                <div class="cd-doc-title">DOCUMENTS</div>
+                <div class="cd-docs-list" id="document-list"></div>
             </section>
         </main>
     </div>
