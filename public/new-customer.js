@@ -42,8 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
         newDocGroup.innerHTML = `
             <label>Document ${docCount + 1}</label>
             <input type="text" name="document_names" placeholder="Document Name (e.g., Aadhar Card)" required>
-            <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" required style="margin-top: 5px;">
-            <button type="button" class="btn btn-delete-doc" style="background: #dc3545; margin-top: 5px;">Remove</button>
+            <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" required>
+            <button type="button" class="btn btn-delete-doc">Remove</button>
             <hr>
         `;
         docSection.appendChild(newDocGroup);

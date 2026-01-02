@@ -206,3 +206,151 @@ button, .btn { display: inline-flex; align-items: center; justify-content: cente
         width: 100%;
     }
 }
+
+.new-customer-page .form-container {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.new-customer-page .nc-message {
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.new-customer-page .nc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 18px;
+}
+
+.new-customer-page .nc-span-2 {
+    grid-column: span 2;
+}
+
+.new-customer-page .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.new-customer-page label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #222;
+}
+
+.new-customer-page input,
+.new-customer-page select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: 8px;
+    outline: none;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.new-customer-page input:focus,
+.new-customer-page select:focus {
+    border-color: rgba(40,167,69,0.7);
+    box-shadow: 0 0 0 3px rgba(40,167,69,0.15);
+}
+
+.new-customer-page .nc-readonly {
+    background: rgba(40,167,69,0.08);
+    border-color: rgba(40,167,69,0.35);
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.new-customer-page .nc-docs {
+    margin-top: 6px;
+    padding: 14px;
+    border: 1px dashed rgba(0,0,0,0.18);
+    border-radius: 10px;
+    background: rgba(0,0,0,0.02);
+}
+
+.new-customer-page .nc-docs-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.new-customer-page .nc-docs-title {
+    font-weight: 800;
+    color: #222;
+}
+
+.new-customer-page .document-group {
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.12);
+    background: #fff;
+}
+
+.new-customer-page .document-group input[type="file"] {
+    margin-top: 6px;
+}
+
+.new-customer-page .document-group .btn-delete-doc {
+    margin-top: 8px;
+}
+
+.new-customer-page .document-group hr {
+    border: 0;
+    height: 1px;
+    background: rgba(0,0,0,0.08);
+    margin: 10px 0 0 0;
+}
+
+.new-customer-page .nc-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 4px;
+}
+
+.new-customer-page .btn {
+    background: #28a745;
+    color: #fff;
+    font-weight: 700;
+}
+
+.new-customer-page .btn:hover {
+    background: #218838;
+}
+
+.new-customer-page .btn.btn-dark {
+    background: #000;
+}
+
+.new-customer-page .btn.btn-dark:hover {
+    background: #222;
+}
+
+.new-customer-page .btn.btn-delete-doc {
+    background: #dc3545;
+}
+
+.new-customer-page .btn.btn-delete-doc:hover {
+    background: #c82333;
+}
+
+@media (max-width: 900px) {
+    .new-customer-page .nc-grid {
+        grid-template-columns: 1fr;
+    }
+    .new-customer-page .nc-span-2 {
+        grid-column: span 1;
+    }
+    .new-customer-page .nc-actions {
+        justify-content: stretch;
+    }
+    .new-customer-page .nc-actions .btn {
+        width: 100%;
+    }
+}
