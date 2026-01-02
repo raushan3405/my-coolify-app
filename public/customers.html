@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customers - Frmply</title>
     <link rel="stylesheet" href="style.css">
+    <script src="auth.js"></script> <!-- Auth Guard -->
 </head>
 <body>
     <div class="container">
@@ -25,13 +26,13 @@
             </ul>
             <ul class="bottom-menu">
                 <li><a href="settings.html">Settings</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
             </ul>
         </aside>
 
         <main class="main-content">
             <header class="header">
                 <h2>Customers</h2>
-                <!-- The link below is now corrected -->
                 <div class="header-actions" style="display: flex; gap: 10px;">
                     <input type="text" placeholder="Search Customers...">
                     <button class="btn-dark">Search</button>

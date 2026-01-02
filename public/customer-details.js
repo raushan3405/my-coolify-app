@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
         const customer = await response.json();
 
-        // --- 1. Populate Customer Details ---
         nameHeader.textContent = customer.full_name;
         detailsContainer.innerHTML = `
             <div class="form-group"><label>Customer ID</label><p>${customer.cust_id}</p></div>
@@ -35,12 +34,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             <div class="form-group"><label>Identification 2</label><p>${customer.identification_2 || 'N/A'}</p></div>
         `;
 
-        // --- 2. Populate Documents List ---
         docList.innerHTML = '';
         if (customer.documents && customer.documents.length > 0) {
             customer.documents.forEach(doc => {
                 const li = document.createElement('li');
-                const webPath = doc.file_path.replace('public/', '');
+                const webPath = doc.file_path.replace('public/', ''); 
                 li.innerHTML = `<a href="${webPath}" target="_blank">${doc.document_name}</a>`;
                 docList.appendChild(li);
             });
@@ -48,35 +46,38 @@ document.addEventListener('DOMContentLoaded', async () => {
             docList.innerHTML = '<li>No documents uploaded for this customer.</li>';
         }
 
-        // --- 3. Add Action Buttons ---
-        const editButton = document.createElement('a');
-        editButton.href = `edit-customer.html?id=${customer.cust_id}`; // Link to the new edit page
-        editButton.className = 'btn';
-        editButton.textContent = 'Edit';
-        editButton.style.backgroundColor = '#ffc107';
+        // --- Authorization Check for Action Buttons ---
+        if (isManager()) {
+            const editButton = document.createElement('a');
+            editButton.href = `edit-customer.html?id=${customer.cust_id}`;
+            editButton.className = 'btn';
+            editButton.textContent = 'Edit';
+            editButton.style.backgroundColor = '#ffc107';
 
-        const deleteButton = document.createElement('button');
-        deleteButton.className = 'btn btn-delete';
-        deleteButton.textContent = 'Delete';
-        deleteButton.style.backgroundColor = '#dc3545';
-        deleteButton.dataset.id = customer.cust_id;
-        
-        headerActions.appendChild(editButton);
-        headerActions.appendChild(deleteButton);
+            const deleteButton = document.createElement('button');
+            deleteButton.className = 'btn btn-delete';
+            deleteButton.textContent = 'Delete';
+            deleteButton.style.backgroundColor = '#dc3545';
+            deleteButton.dataset.id = customer.cust_id;
+            
+            headerActions.appendChild(editButton);
+            headerActions.appendChild(deleteButton);
+        }
 
     } catch (error) {
         console.error('Failed to load customer details:', error);
         detailsContainer.innerHTML = `<p style="color:red; text-align:center;">${error.message}</p>`;
     }
 
-    // --- 4. Add Delete Functionality ---
+    // --- Delete Functionality (only available to managers) ---
     headerActions.addEventListener('click', async (event) => {
-        if(event.target.classList.contains('btn-delete')){
+        if(event.target.classList.contains('btn-delete') && isManager()){
             const customerId = event.target.dataset.id;
-            if(confirm(`Are you sure you want to permanently delete customer ${customerId}? This will also delete all their documents.`)){
+            if(confirm(`Are you sure you want to permanently delete customer ${customerId}?`)){
                 try {
                     const response = await fetch(`/api/customers/${customerId}`, {
-                        method: 'DELETE'
+                        method: 'DELETE',
+                        headers: { 'Authorization': `Bearer ${token}` } // Pass token for protected routes
                     });
                     const result = await response.json();
                     if(response.ok){

@@ -2,12 +2,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const tableBody = document.querySelector('#customersTable tbody');
     const searchInput = document.querySelector('input[placeholder="Search Customers..."]');
     const searchButton = document.querySelector('button.btn-dark');
+    const newCustomerButton = document.querySelector('a.btn:not(.btn-dark)');
+
+    // Hide New Customer button for non-managers
+    if (!isManager()) {
+        newCustomerButton.style.display = 'none';
+    }
 
     async function loadCustomers(searchTerm = '') {
         try {
-            // The backend GET route is already set up to handle search
             const url = searchTerm ? `/api/customers?search=${encodeURIComponent(searchTerm)}` : '/api/customers';
-            const response = await fetch(url);
+            const response = await fetch(url, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
 
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             
@@ -42,14 +49,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Event listeners for search
     searchButton.addEventListener('click', () => loadCustomers(searchInput.value));
     searchInput.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter') {
-            loadCustomers(searchInput.value);
-        }
+        if (event.key === 'Enter') loadCustomers(searchInput.value);
     });
 
-    // Initial load
     loadCustomers();
 });

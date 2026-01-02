@@ -7,26 +7,16 @@ const db = require('./db');
 
 const app = express();
 
-// Use the PORT environment variable for cloud platforms, default to 3000
 const PORT = process.env.PORT || 3000;
 
-// --- Middleware ---
-
-// Enable CORS (safe for frontend + backend same domain)
 app.use(cors());
-
-// Serve static files from the 'public' directory (HTML, CSS, JS)
 app.use(express.static(path.join(__dirname, 'public')));
-
-// Enable JSON body parsing
 app.use(express.json());
 
-// --- BASIC API TEST ---
 app.get('/api', (req, res) => {
   res.json({ message: 'Welcome to the Frmply API!' });
 });
 
-// --- 🔴 DATABASE CONNECTION TEST (VERY IMPORTANT) ---
 app.get('/api/test-db', async (req, res) => {
   try {
     const result = await db.query('SELECT NOW()');
@@ -43,6 +33,9 @@ app.get('/api/test-db', async (req, res) => {
 });
 
 // --- API ROUTES ---
+const authRoutes = require('./routes/auth');
+app.use('/api/auth', authRoutes);
+
 const customerRoutes = require('./routes/customers');
 app.use('/api/customers', customerRoutes);
 
@@ -76,7 +69,6 @@ app.use('/api/support', supportRoutes);
 const socialMediaRoutes = require('./routes/social_media');
 app.use('/api/social_media', socialMediaRoutes);
 
-// --- SERVER START ---
 app.listen(PORT, () => {
   console.log(`✅ Server running on port ${PORT}`);
 });
