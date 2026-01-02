@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frmply Dashboard</title>
-    <link rel="stylesheet" href="/style.css"> <!-- Corrected Path -->
-    <script src="/auth.js"></script> <!-- Corrected Path -->
+    <link rel="stylesheet" href="/style.css">
+    <script src="/auth.js"></script>
 </head>
 <body class="app-body">
     <div class="container">
@@ -14,7 +14,6 @@
                 <img src="/your-logo.png" alt="Frmply Logo" style="width:100px; height:auto;">
             </div>
             <ul class="menu">
-                 <!-- Corrected Paths -->
                 <li class="active"><a href="/">Dashboard</a></li>
                 <li><a href="/customers.html">Customers</a></li>
                 <li><a href="/my-orders.html">My Orders</a></li>
@@ -31,22 +30,15 @@
             </ul>
         </aside>
 
-        <main class="main-content">
+        <main class="main-content" id="main-content">
             <header class="header">
                 <h2 id="welcome-message">Dashboard</h2>
             </header>
-
-            <section class="cards">
-                <!-- KPI cards -->
-            </section>
-
-            <section class="charts-and-tables">
-                <!-- Charts and tables -->
-            </section>
+            <!-- Dashboard content will be loaded dynamically if using a router -->
+            <!-- For a multi-page app, this content is correct. -->
         </main>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="/script.js"></script> <!-- Corrected Path -->
+    <script src="/script.js"></script>
 </body>
 </html>

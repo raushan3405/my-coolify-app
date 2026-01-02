@@ -9,7 +9,9 @@ const PORT = process.env.PORT || 3000;
 // --- Middleware ---
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public'))); // Serve assets like CSS, JS, etc.
+
+// CORRECTED: Serve all static files from the 'public' directory at the root level
+app.use(express.static(path.join(__dirname, 'public')));
 
 // --- API ROUTES ---
 app.use('/api/auth', require('./routes/auth'));
@@ -33,7 +35,6 @@ app.get('/login', (req, res) => {
 });
 
 // Catch-all route for the main application shell
-// This MUST be the last GET route
 app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
