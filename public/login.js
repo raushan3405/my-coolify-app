@@ -3,11 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const messageDiv = document.getElementById('form-message');
     const submitButton = form.querySelector('button[type="submit"]');
 
-    // Check if user is already logged in
-    if (localStorage.getItem('token')) {
-        window.location.href = 'index.html';
-    }
-
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
         messageDiv.textContent = '';
@@ -28,13 +23,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const result = await response.json();
 
-            if (response.ok) {
-                // Store token and user info in local storage
-                localStorage.setItem('token', result.token);
+            if (response.ok && result.success) {
+                // IMPORTANT: Save user info for UI personalization (e.g., showing name/role)
                 localStorage.setItem('user', JSON.stringify(result.user));
                 
-                // Redirect to dashboard
-                window.location.href = 'index.html';
+                // The server has set the secure cookie. Now, redirect.
+                window.location.href = '/';
             } else {
                 messageDiv.textContent = result.msg || 'Login failed.';
                 messageDiv.style.color = 'red';
