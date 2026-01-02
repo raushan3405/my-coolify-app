@@ -9,11 +9,9 @@ const PORT = process.env.PORT || 3000;
 // --- Middleware ---
 app.use(cors());
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public'))); // Serve assets like CSS, JS, etc.
 
-// 1. Serve static assets (CSS, JS, images) from the 'public' directory
-app.use(express.static(path.join(__dirname, 'public')));
-
-// --- API ROUTES (These remain the same) ---
+// --- API ROUTES ---
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/customers', require('./routes/customers'));
 app.use('/api/services', require('./routes/services'));
@@ -28,8 +26,14 @@ app.use('/api/support', require('./routes/support'));
 app.use('/api/social_media', require('./routes/social_media'));
 
 // --- Page Routing ---
-// Any request that is not for an API route will serve the main index.html file.
-// The client-side routing (in auth.js) will handle showing the correct content or redirecting to login.
+
+// Specific route for the login page to prevent redirect loop
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'login.html'));
+});
+
+// Catch-all route for the main application shell
+// This MUST be the last GET route
 app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
