@@ -534,3 +534,124 @@ button, .btn { display: inline-flex; align-items: center; justify-content: cente
         width: 100%;
     }
 }
+
+.edit-team-member-page .form-container {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.edit-team-member-page .tm-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 10px 0;
+}
+
+.edit-team-member-page .tm-topbar-left { width: 1px; }
+
+.edit-team-member-page .tm-title {
+    background: #ffc107;
+    color: #000;
+    font-weight: 800;
+    padding: 10px 40px;
+    border: 2px solid rgba(0,0,0,0.25);
+    text-align: center;
+    min-width: 260px;
+}
+
+.edit-team-member-page .tm-topbar-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.edit-team-member-page .tm-action-btn {
+    background: #ffc107;
+    color: #000;
+    font-weight: 800;
+    border-radius: 0;
+    border: 2px solid rgba(0,0,0,0.25);
+    padding: 8px 24px;
+    text-decoration: none;
+}
+
+.edit-team-member-page .tm-divider {
+    height: 6px;
+    background: #000;
+    margin: 10px 0 20px 0;
+}
+
+.edit-team-member-page .tm-message {
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.edit-team-member-page .tm-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+    padding: 0 10px;
+}
+
+.edit-team-member-page .tm-col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.edit-team-member-page .tm-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 10px;
+    align-items: center;
+}
+
+.edit-team-member-page .tm-row label {
+    font-size: 12px;
+    color: #000;
+    text-align: right;
+}
+
+.edit-team-member-page .tm-row input,
+.edit-team-member-page .tm-row select {
+    width: 100%;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.15);
+    padding: 8px 10px;
+    border-radius: 0;
+    font-weight: 700;
+    box-sizing: border-box;
+}
+
+.edit-team-member-page .tm-static {
+    width: 100%;
+    background: rgba(255,255,255,0.9);
+    border: 1px solid rgba(0,0,0,0.15);
+    padding: 8px 10px;
+    border-radius: 0;
+    font-weight: 800;
+    box-sizing: border-box;
+}
+
+.edit-team-member-page .tm-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+@media (max-width: 900px) {
+    .edit-team-member-page .tm-fields {
+        grid-template-columns: 1fr;
+    }
+    .edit-team-member-page .tm-row {
+        grid-template-columns: 140px 1fr;
+    }
+    .edit-team-member-page .tm-actions {
+        justify-content: stretch;
+    }
+    .edit-team-member-page .tm-actions .btn {
+        width: 100%;
+    }
+}

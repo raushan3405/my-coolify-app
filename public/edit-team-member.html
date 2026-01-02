@@ -27,14 +27,41 @@
                 <li><a href="#" onclick="logout()">Logout</a></li>
             </ul>
         </aside>
-        <main class="main-content">
-            <header class="header">
-                <h2>Edit Team Member</h2>
-                <a href="/f-team.html" class="btn btn-dark">&larr; Back to Team List</a>
-            </header>
+        <main class="main-content edit-team-member-page">
+            <div class="tm-topbar">
+                <div class="tm-topbar-left"></div>
+                <div class="tm-title">EDIT TEAM MEMBER</div>
+                <div class="tm-topbar-actions">
+                    <a href="/f-team.html" class="btn tm-action-btn">BACK</a>
+                </div>
+            </div>
+            <div class="tm-divider"></div>
+
             <section class="form-container">
                 <form id="editTeamMemberForm">
-                    <!-- Form content -->
+                    <div id="form-message" class="tm-message"></div>
+
+                    <section class="tm-fields">
+                        <div class="tm-col">
+                            <div class="tm-row"><label>FTM Code :</label><div class="tm-static" id="tm-ftm-code">—</div></div>
+                            <div class="tm-row"><label>Name :</label><input name="name" type="text" required></div>
+                        </div>
+                        <div class="tm-col">
+                            <div class="tm-row"><label>Role :</label><input name="role" type="text" placeholder="Employee"></div>
+                            <div class="tm-row"><label>Email :</label><input name="email" type="email"></div>
+                            <div class="tm-row">
+                                <label>Status :</label>
+                                <select name="is_active">
+                                    <option value="true">Active</option>
+                                    <option value="false">Inactive</option>
+                                </select>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="tm-actions">
+                        <button type="submit" class="btn tm-action-btn">SAVE</button>
+                    </div>
                 </form>
             </section>
         </main>

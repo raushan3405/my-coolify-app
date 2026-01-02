@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const form = document.getElementById('editTeamMemberForm');
     const messageDiv = document.getElementById('form-message');
     const memberId = new URLSearchParams(window.location.search).get('id');
+    const ftmCodeEl = document.getElementById('tm-ftm-code');
 
     if (!memberId) {
         messageDiv.textContent = 'No team member ID provided. Redirecting...';
@@ -23,6 +24,14 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (form.elements[key]) {
                 form.elements[key].value = member[key];
             }
+        }
+
+        if (ftmCodeEl) {
+            ftmCodeEl.textContent = member.ftm_code || memberId;
+        }
+
+        if (form.elements.is_active) {
+            form.elements.is_active.value = member.is_active ? 'true' : 'false';
         }
 
     } catch (error) {
