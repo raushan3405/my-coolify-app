@@ -5,6 +5,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const addDocBtn = document.getElementById('add-doc-btn');
     const docSection = document.getElementById('document-section');
 
+    if (!isManager()) {
+        window.location.href = '/customers.html';
+        return;
+    }
+
+    const mobileInput = document.getElementById('mobile_number');
+    const custIdPreview = document.getElementById('cust_id_preview');
+
+    const generateCustIdPreview = (mobile) => {
+        const digits = String(mobile || '').replace(/\D/g, '');
+        if (digits.length < 4) return '';
+        const now = new Date();
+        const day = String(now.getDate()).padStart(2, '0');
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const year = String(now.getFullYear()).slice(-2);
+        const lastFour = digits.slice(-4);
+        return `FS${day}${month}${year}${lastFour}`;
+    };
+
+    const updateCustIdPreview = () => {
+        if (!custIdPreview || !mobileInput) return;
+        custIdPreview.value = generateCustIdPreview(mobileInput.value);
+    };
+
+    if (mobileInput) {
+        mobileInput.addEventListener('input', updateCustIdPreview);
+        updateCustIdPreview();
+    }
+
     // --- 1. Dynamic Document Field Logic ---
     addDocBtn.addEventListener('click', () => {
         const docCount = docSection.querySelectorAll('.document-group').length;
@@ -31,6 +60,27 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
         messageDiv.textContent = '';
+
+        if (!isManager()) {
+            messageDiv.textContent = 'Unauthorized.';
+            messageDiv.style.color = 'red';
+            return;
+        }
+
+        const email = form.elements.email ? String(form.elements.email.value || '').trim() : '';
+        const mobile = mobileInput ? String(mobileInput.value || '').replace(/\D/g, '') : '';
+
+        if (!email) {
+            messageDiv.textContent = 'Email is required.';
+            messageDiv.style.color = 'red';
+            return;
+        }
+
+        if (mobile.length !== 10) {
+            messageDiv.textContent = 'Mobile number must be 10 digits.';
+            messageDiv.style.color = 'red';
+            return;
+        }
 
         const originalButtonText = submitButton.innerHTML;
         submitButton.disabled = true;

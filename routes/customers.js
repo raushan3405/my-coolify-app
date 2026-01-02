@@ -20,19 +20,45 @@ const generateCustId = (mobileNumber) => {
  * @access  Public
  */
 router.post('/', upload.array('documents'), async (req, res) => {
-    const { full_name, email, mobile_number, date_of_birth, gender, mother_name, father_name, caste, address, pin_code, identification_1, identification_2, document_names } = req.body;
-    if (!full_name || !mobile_number) {
-        return res.status(400).json({ msg: 'Full Name and Mobile Number are required.' });
+    if (!req.user || !['Manager', 'Admin'].includes(req.user.role)) {
+        return res.status(403).json({ msg: 'Forbidden' });
     }
-    const cust_id = generateCustId(mobile_number);
+
+    const { full_name, email, mobile_number, date_of_birth, gender, mother_name, father_name, caste, address, pin_code, identification_1, identification_2, document_names } = req.body;
+    const cleanMobile = String(mobile_number || '').replace(/\D/g, '');
+    const cleanEmail = String(email || '').trim();
+
+    if (!full_name || !cleanEmail || !cleanMobile) {
+        return res.status(400).json({ msg: 'Name, Email and Mobile Number are required.' });
+    }
+
+    if (cleanMobile.length !== 10) {
+        return res.status(400).json({ msg: 'Mobile number must be 10 digits.' });
+    }
+
+    const cust_id = generateCustId(cleanMobile);
     const client = await db.pool.connect();
     try {
         await client.query('BEGIN');
+
+        const existing = await client.query(
+            'SELECT cust_id, email, mobile_number FROM customers WHERE cust_id = $1 OR email = $2 OR mobile_number = $3',
+            [cust_id, cleanEmail, cleanMobile]
+        );
+        if (existing.rowCount > 0) {
+            await client.query('ROLLBACK');
+            const row = existing.rows[0];
+            if (row.cust_id === cust_id) return res.status(409).json({ msg: 'Cust_ID already exists. Please try again.' });
+            if (row.email === cleanEmail) return res.status(409).json({ msg: 'This email is already registered.' });
+            if (row.mobile_number === cleanMobile) return res.status(409).json({ msg: 'This mobile number is already registered.' });
+            return res.status(409).json({ msg: 'Customer already exists.' });
+        }
+
         const customerQuery = `
             INSERT INTO customers (cust_id, full_name, email, mobile_number, date_of_birth, gender, mother_name, father_name, caste, address, pin_code, identification_1, identification_2)
             VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING *
         `;
-        const customerParams = [cust_id, full_name, email || null, mobile_number, date_of_birth || null, gender, mother_name, father_name, caste, address, pin_code, identification_1, identification_2];
+        const customerParams = [cust_id, full_name, cleanEmail, cleanMobile, date_of_birth || null, gender, mother_name, father_name, caste, address, pin_code, identification_1, identification_2];
         const customerResult = await client.query(customerQuery, customerParams);
         if (req.files && req.files.length > 0) {
             const docQuery = 'INSERT INTO customer_documents (cust_id, document_name, file_path) VALUES ($1, $2, $3)';
@@ -52,6 +78,7 @@ router.post('/', upload.array('documents'), async (req, res) => {
             const detail = err.detail.toLowerCase();
             if (detail.includes('email')) return res.status(409).json({ msg: 'This email is already registered.' });
             if (detail.includes('mobile')) return res.status(409).json({ msg: 'This mobile number is already registered.' });
+            if (detail.includes('cust_id')) return res.status(409).json({ msg: 'Cust_ID already exists. Please try again.' });
         }
         console.error(err.message);
         res.status(500).send('Server Error');
@@ -105,9 +132,22 @@ router.get('/:cust_id', async (req, res) => {
 router.put('/:cust_id', upload.array('new_documents'), async (req, res) => {
     const { cust_id } = req.params;
     const { full_name, email, mobile_number, date_of_birth, gender, mother_name, father_name, caste, address, pin_code, identification_1, identification_2, new_document_names, documents_to_delete } = req.body;
-    if (!full_name || !mobile_number) {
-        return res.status(400).json({ msg: 'Full Name and Mobile Number are required.' });
+
+    if (!req.user || !['Manager', 'Admin'].includes(req.user.role)) {
+        return res.status(403).json({ msg: 'Forbidden' });
     }
+
+    const cleanMobile = String(mobile_number || '').replace(/\D/g, '');
+    const cleanEmail = String(email || '').trim();
+
+    if (!full_name || !cleanEmail || !cleanMobile) {
+        return res.status(400).json({ msg: 'Name, Email and Mobile Number are required.' });
+    }
+
+    if (cleanMobile.length !== 10) {
+        return res.status(400).json({ msg: 'Mobile number must be 10 digits.' });
+    }
+
     const client = await db.pool.connect();
     try {
         await client.query('BEGIN');
@@ -129,7 +169,7 @@ router.put('/:cust_id', upload.array('new_documents'), async (req, res) => {
             }
         }
         const customerQuery = `UPDATE customers SET full_name = $1, email = $2, mobile_number = $3, date_of_birth = $4, gender = $5, mother_name = $6, father_name = $7, caste = $8, address = $9, pin_code = $10, identification_1 = $11, identification_2 = $12 WHERE cust_id = $13 RETURNING *`;
-        const customerParams = [full_name, email || null, mobile_number, date_of_birth || null, gender, mother_name, father_name, caste, address, pin_code, identification_1, identification_2, cust_id];
+        const customerParams = [full_name, cleanEmail, cleanMobile, date_of_birth || null, gender, mother_name, father_name, caste, address, pin_code, identification_1, identification_2, cust_id];
         const customerResult = await client.query(customerQuery, customerParams);
         if (customerResult.rowCount === 0) throw new Error('Customer not found during update.');
         await client.query('COMMIT');
@@ -157,6 +197,9 @@ router.put('/:cust_id', upload.array('new_documents'), async (req, res) => {
  * @access  Public
  */
 router.delete('/:cust_id', async (req, res) => {
+    if (!req.user || !['Manager', 'Admin'].includes(req.user.role)) {
+        return res.status(403).json({ msg: 'Forbidden' });
+    }
     const { cust_id } = req.params;
     const client = await db.pool.connect();
     try {
