@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // --- 3. Add Action Buttons ---
         const editButton = document.createElement('a');
-        editButton.href = `edit-customer-v2.html?id=${customer.cust_id}`; // Link to the new edit page
+        editButton.href = `edit-customer.html?id=${customer.cust_id}`; // Link to the new edit page
         editButton.className = 'btn';
         editButton.textContent = 'Edit';
         editButton.style.backgroundColor = '#ffc107';
