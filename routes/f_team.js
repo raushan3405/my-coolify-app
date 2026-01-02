@@ -68,7 +68,53 @@ router.post('/', async (req, res) => {
 });
 
 // --- PUT and DELETE routes will be updated later with authorization ---
-router.put('/:id', async (req, res) => { /* ... existing code ... */ });
+router.put('/:id', async (req, res) => {
+  const { id } = req.params;
+  const { name, role, email, is_active } = req.body;
+
+  if (!name) {
+    return res.status(400).json({ msg: 'Name is required.' });
+  }
+
+  const normalizedRole = role ? String(role).trim() : 'Employee';
+  const normalizedEmail = email ? String(email).trim() : null;
+
+  let activeValue = null;
+  if (typeof is_active !== 'undefined') {
+    if (typeof is_active === 'boolean') {
+      activeValue = is_active;
+    } else {
+      const s = String(is_active).trim().toLowerCase();
+      activeValue = s === 'true' || s === '1' || s === 'yes';
+    }
+  }
+
+  try {
+    const queryText = `
+      UPDATE f_team
+      SET name = $1,
+          role = $2,
+          email = $3,
+          is_active = COALESCE($4, is_active)
+      WHERE ftm_code = $5
+      RETURNING ftm_code, name, role, email, is_active
+    `;
+    const queryParams = [name, normalizedRole, normalizedEmail, activeValue, id];
+    const { rows } = await db.query(queryText, queryParams);
+
+    if (rows.length === 0) {
+      return res.status(404).json({ msg: 'Team member not found.' });
+    }
+
+    res.json(rows[0]);
+  } catch (err) {
+    console.error(err.message);
+    if (err.code === '23505') {
+      return res.status(400).json({ msg: 'FTM Code or Email already exists.' });
+    }
+    res.status(500).send('Server Error');
+  }
+});
 router.delete('/:id', async (req, res) => { /* ... existing code ... */ });
 
 module.exports = router;

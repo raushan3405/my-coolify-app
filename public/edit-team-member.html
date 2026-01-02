@@ -47,7 +47,14 @@
                             <div class="tm-row"><label>Name :</label><input name="name" type="text" required></div>
                         </div>
                         <div class="tm-col">
-                            <div class="tm-row"><label>Role :</label><input name="role" type="text" placeholder="Employee"></div>
+                            <div class="tm-row">
+                                <label>Role :</label>
+                                <select name="role">
+                                    <option value="Admin">Admin</option>
+                                    <option value="Manager">Manager</option>
+                                    <option value="Employee">Employee</option>
+                                </select>
+                            </div>
                             <div class="tm-row"><label>Email :</label><input name="email" type="email"></div>
                             <div class="tm-row">
                                 <label>Status :</label>
