@@ -27,14 +27,66 @@
                 <li><a href="#" onclick="logout()">Logout</a></li>
             </ul>
         </aside>
-        <main class="main-content">
-            <header class="header">
-                <h2>Edit Customer</h2>
-                <a href="" id="back-to-details" class="btn btn-dark">&larr; Back to Details</a>
-            </header>
+        <main class="main-content edit-customer-page">
+            <div class="ec-topbar">
+                <div class="ec-topbar-left"></div>
+                <div class="ec-title">EDIT CUSTOMER</div>
+                <div class="ec-topbar-actions">
+                    <a href="" id="back-to-details" class="btn ec-action-btn">BACK</a>
+                </div>
+            </div>
+            <div class="ec-divider"></div>
+
             <section class="form-container">
                 <form id="editCustomerForm" enctype="multipart/form-data">
-                    <!-- Form content -->
+                    <div id="form-message" class="ec-message"></div>
+
+                    <section class="ec-fields">
+                        <div class="ec-col">
+                            <div class="ec-row"><label>Cust_ID :</label><div class="ec-static" id="cust_id_display">—</div></div>
+                            <div class="ec-row"><label>Customer's Name :</label><input name="full_name" type="text" required></div>
+                            <div class="ec-row"><label>Email :</label><input name="email" type="email" required></div>
+                            <div class="ec-row"><label>Mob. NO :</label><input name="mobile_number" type="text" required></div>
+                            <div class="ec-row"><label>Date Of Birth :</label><input name="date_of_birth" type="date"></div>
+                            <div class="ec-row">
+                                <label>Gender :</label>
+                                <select name="gender">
+                                    <option value="">-- Select --</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="ec-row"><label>Mother's Name :</label><input name="mother_name" type="text"></div>
+                            <div class="ec-row"><label>Father's Name :</label><input name="father_name" type="text"></div>
+                        </div>
+                        <div class="ec-col">
+                            <div class="ec-row"><label>Caste :</label><input name="caste" type="text"></div>
+                            <div class="ec-row"><label>Address :</label><input name="address" type="text"></div>
+                            <div class="ec-row"><label>Pin Code :</label><input name="pin_code" type="text"></div>
+                            <div class="ec-row"><label>Identification 1 :</label><input name="identification_1" type="text"></div>
+                            <div class="ec-row"><label>Identification 2 :</label><input name="identification_2" type="text"></div>
+                        </div>
+                    </section>
+
+                    <section class="ec-documents">
+                        <div class="ec-doc-title">DOCUMENTS</div>
+
+                        <div class="ec-doc-block">
+                            <div class="ec-doc-block-title">Existing Documents</div>
+                            <div id="existing-docs-section" class="ec-doc-list"></div>
+                        </div>
+
+                        <div class="ec-doc-block">
+                            <div class="ec-doc-block-title">Add New Documents (Optional)</div>
+                            <button type="button" class="btn" id="add-doc-btn">Add Document</button>
+                            <div id="new-docs-section" class="ec-doc-list"></div>
+                        </div>
+                    </section>
+
+                    <div class="ec-actions">
+                        <button type="submit" class="btn ec-action-btn">SAVE</button>
+                    </div>
                 </form>
             </section>
         </main>

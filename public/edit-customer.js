@@ -48,8 +48,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         newDocGroup.innerHTML = `
             <label>New Document</label>
             <input type="text" name="new_document_names" placeholder="Document Name" required>
-            <input type="file" name="new_documents" accept=".pdf,.jpg,.jpeg,.png" required style="margin-top: 5px;">
-            <button type="button" class="btn btn-delete-doc" style="background: #dc3545; margin-top: 5px;">Remove</button><hr>
+            <input type="file" name="new_documents" accept=".pdf,.jpg,.jpeg,.png" required>
+            <button type="button" class="btn btn-delete-doc">Remove</button><hr>
         `;
         newDocsSection.appendChild(newDocGroup);
     });
