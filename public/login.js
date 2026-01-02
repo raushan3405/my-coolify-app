@@ -1,6 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('loginForm');
-    const messageDiv = document.getElementById('form-message');
+    if (!form) return;
+
+    let messageDiv = document.getElementById('form-message');
+    if (!messageDiv) {
+        messageDiv = document.createElement('div');
+        messageDiv.id = 'form-message';
+        form.prepend(messageDiv);
+    }
+
     const submitButton = form.querySelector('button[type="submit"]');
 
     form.addEventListener('submit', async (event) => {
