@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sales - Frmply</title>
     <link rel="stylesheet" href="style.css">
+    <script src="auth.js"></script> <!-- Auth Guard -->
 </head>
 <body>
     <div class="container">
@@ -20,18 +21,18 @@
                 <li class="active"><a href="sales.html">Sales</a></li>
                 <li><a href="invoices.html">Invoice</a></li>
                 <li><a href="leaderboard.html">Leaderboard</a></li>
-                <li><a href="f-team.html">F-Team</a></li>
+                <li class="manager-only"><a href="f-team.html">F-Team</a></li>
                 <li><a href="budget-track.html">Budget</a></li>
             </ul>
             <ul class="bottom-menu">
                 <li><a href="settings.html">Settings</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
             </ul>
         </aside>
 
         <main class="main-content">
             <header class="header">
                 <h2>Sales Records</h2>
-                <!-- Add search/filter controls here later -->
             </header>
 
             <section class="table-container">

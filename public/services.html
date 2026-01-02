@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services - Frmply</title>
     <link rel="stylesheet" href="style.css">
+    <script src="auth.js"></script> <!-- Auth Guard -->
 </head>
 <body>
     <div class="container">
@@ -20,11 +21,12 @@
                 <li><a href="sales.html">Sales</a></li>
                 <li><a href="invoices.html">Invoice</a></li>
                 <li><a href="leaderboard.html">Leaderboard</a></li>
-                <li><a href="f-team.html">F-Team</a></li>
+                <li class="manager-only"><a href="f-team.html">F-Team</a></li>
                 <li><a href="budget-track.html">Budget</a></li>
             </ul>
             <ul class="bottom-menu">
                 <li><a href="settings.html">Settings</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
             </ul>
         </aside>
 
@@ -34,7 +36,7 @@
                 <div class="header-actions" style="display: flex; gap: 10px;">
                     <input type="text" placeholder="Search Services...">
                     <button class="btn-dark">Search</button>
-                    <a href="new-service.html" class="btn">New Service</a>
+                    <a href="new-service.html" class="btn manager-only">New Service</a>
                 </div>
             </header>
 
@@ -46,7 +48,7 @@
                             <th>Service Name</th>
                             <th>Category</th>
                             <th>Price</th>
-                            <th>Actions</th>
+                            <th class="manager-only">Actions</th>
                         </tr>
                     </thead>
                     <tbody>

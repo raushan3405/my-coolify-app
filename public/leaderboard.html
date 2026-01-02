@@ -6,6 +6,7 @@
     <title>Leaderboard - Frmply</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="leaderboard.css">
+    <script src="auth.js"></script> <!-- Auth Guard -->
 </head>
 <body>
     <div class="container">
@@ -21,11 +22,12 @@
                 <li><a href="sales.html">Sales</a></li>
                 <li><a href="invoices.html">Invoice</a></li>
                 <li class="active"><a href="leaderboard.html">Leaderboard</a></li>
-                <li><a href="f-team.html">F-Team</a></li>
+                <li class="manager-only"><a href="f-team.html">F-Team</a></li>
                 <li><a href="budget-track.html">Budget</a></li>
             </ul>
             <ul class="bottom-menu">
                 <li><a href="settings.html">Settings</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
             </ul>
         </aside>
 
