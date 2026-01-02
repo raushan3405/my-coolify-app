@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Details - Frmply</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/assets/style.css">
+    <script src="/assets/auth.js"></script> <!-- Auth Guard Added -->
     <style>
         .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; background: #fff; padding: 20px; border-radius: 8px; }
         .details-grid .form-group { margin-bottom: 0; }
@@ -20,18 +21,19 @@
                 <img src="" alt="Frmply Logo" style="width:100px; height:auto;">
             </div>
             <ul class="menu">
-                <li><a href="index.html">Dashboard</a></li>
-                <li class="active"><a href="customers.html">Customers</a></li>
-                <li><a href="my-orders.html">My Orders</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="sales.html">Sales</a></li>
-                <li><a href="invoices.html">Invoice</a></li>
-                <li><a href="leaderboard.html">Leaderboard</a></li>
-                <li><a href="f-team.html">F-Team</a></li>
-                <li><a href="budget-track.html">Budget</a></li>
+                <li><a href="/">Dashboard</a></li>
+                <li class="active"><a href="/customers.html">Customers</a></li>
+                <li><a href="/my-orders.html">My Orders</a></li>
+                <li><a href="/services.html">Services</a></li>
+                <li><a href="/sales.html">Sales</a></li>
+                <li><a href="/invoices.html">Invoice</a></li>
+                <li><a href="/leaderboard.html">Leaderboard</a></li>
+                <li class="manager-only"><a href="/f-team.html">F-Team</a></li>
+                <li><a href="/budget-track.html">Budget</a></li>
             </ul>
             <ul class="bottom-menu">
-                <li><a href="settings.html">Settings</a></li>
+                <li><a href="/settings.html">Settings</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
             </ul>
         </aside>
 
@@ -39,8 +41,7 @@
             <header class="header">
                 <h2 id="customer-name-header">Customer Details</h2>
                 <div class="header-actions" style="display: flex; gap: 10px;">
-                    <a href="customers.html" class="btn btn-dark">&larr; Back to List</a>
-                    <!-- Action buttons are added by JS -->
+                    <a href="/customers.html" class="btn btn-dark">&larr; Back to List</a>
                 </div>
             </header>
 
@@ -55,6 +56,6 @@
         </main>
     </div>
 
-    <script src="customer-details.js"></script>
+    <script src="/assets/customer-details.js"></script>
 </body>
 </html>
